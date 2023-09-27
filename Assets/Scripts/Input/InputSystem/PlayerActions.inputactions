@@ -1,0 +1,111 @@
+{
+    "name": "PlayerActions",
+    "maps": [
+        {
+            "name": "Ship",
+            "id": "6a2b60fa-e516-408d-a67a-5bf3c7dfde75",
+            "actions": [
+                {
+                    "name": "Surge",
+                    "type": "Value",
+                    "id": "ac4d348b-03f8-447f-abb9-b23641e3ba96",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Yaw",
+                    "type": "Value",
+                    "id": "3cc2585c-00e9-495a-915e-d1b3b15e44bb",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2064f02b-e8d5-4f97-8b2a-3534b984dc33",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Yaw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a67d66ec-aa99-4d70-b871-c3b076c20d2f",
+                    "path": "<Gamepad>/leftStick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox controller;Nintendo Pro controller;Playstation DualShock controller",
+                    "action": "Surge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Cannon",
+            "id": "912df182-72a1-47d3-964b-8d1412da2ea7",
+            "actions": [],
+            "bindings": []
+        },
+        {
+            "name": "Menu",
+            "id": "c5541d30-f4d3-4e69-8569-198f8b81c856",
+            "actions": [],
+            "bindings": []
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Playstation DualShock controller",
+            "bindingGroup": "Playstation DualShock controller",
+            "devices": [
+                {
+                    "devicePath": "<DualShockGamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Xbox controller",
+            "bindingGroup": "Xbox controller",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Nintendo Pro controller",
+            "bindingGroup": "Nintendo Pro controller",
+            "devices": [
+                {
+                    "devicePath": "<SwitchProControllerHID>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Keyboard (Testing)",
+            "bindingGroup": "Keyboard (Testing)",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
