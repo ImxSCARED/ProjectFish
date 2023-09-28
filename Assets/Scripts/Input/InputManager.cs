@@ -5,23 +5,24 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    // EDITOR VARIABLES
+    // --EDITOR VARIABLES--
     [SerializeField]
     PlayerInput m_playerInput;
     [SerializeField]
     MovementController m_playerController;
 
-    // CODE VARIABLES
+    // --CODE VARIABLES--
     InputAction m_forwardAction;
     InputAction m_yawAction;
 
+    // --UNITY METHODS--
     void Awake()
     {
         m_forwardAction = m_playerInput.actions["forward"];
         m_yawAction = m_playerInput.actions["yaw"];
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (m_forwardAction.inProgress)
         {
