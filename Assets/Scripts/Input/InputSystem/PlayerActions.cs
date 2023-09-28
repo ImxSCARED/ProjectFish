@@ -24,11 +24,11 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     ""name"": ""PlayerActions"",
     ""maps"": [
         {
-            ""name"": ""Ship"",
+            ""name"": ""ship"",
             ""id"": ""6a2b60fa-e516-408d-a67a-5bf3c7dfde75"",
             ""actions"": [
                 {
-                    ""name"": ""Surge"",
+                    ""name"": ""forward"",
                     ""type"": ""Value"",
                     ""id"": ""ac4d348b-03f8-447f-abb9-b23641e3ba96"",
                     ""expectedControlType"": ""Axis"",
@@ -37,7 +37,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Yaw"",
+                    ""name"": ""yaw"",
                     ""type"": ""Value"",
                     ""id"": ""3cc2585c-00e9-495a-915e-d1b3b15e44bb"",
                     ""expectedControlType"": ""Axis"",
@@ -54,7 +54,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Yaw"",
+                    ""action"": ""yaw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -65,20 +65,20 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox controller;Nintendo Pro controller;Playstation DualShock controller"",
-                    ""action"": ""Surge"",
+                    ""action"": ""forward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         },
         {
-            ""name"": ""Cannon"",
+            ""name"": ""cannon"",
             ""id"": ""912df182-72a1-47d3-964b-8d1412da2ea7"",
             ""actions"": [],
             ""bindings"": []
         },
         {
-            ""name"": ""Menu"",
+            ""name"": ""menu"",
             ""id"": ""c5541d30-f4d3-4e69-8569-198f8b81c856"",
             ""actions"": [],
             ""bindings"": []
@@ -131,14 +131,14 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Ship
-        m_Ship = asset.FindActionMap("Ship", throwIfNotFound: true);
-        m_Ship_Surge = m_Ship.FindAction("Surge", throwIfNotFound: true);
-        m_Ship_Yaw = m_Ship.FindAction("Yaw", throwIfNotFound: true);
-        // Cannon
-        m_Cannon = asset.FindActionMap("Cannon", throwIfNotFound: true);
-        // Menu
-        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        // ship
+        m_ship = asset.FindActionMap("ship", throwIfNotFound: true);
+        m_ship_forward = m_ship.FindAction("forward", throwIfNotFound: true);
+        m_ship_yaw = m_ship.FindAction("yaw", throwIfNotFound: true);
+        // cannon
+        m_cannon = asset.FindActionMap("cannon", throwIfNotFound: true);
+        // menu
+        m_menu = asset.FindActionMap("menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -195,18 +195,18 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Ship
-    private readonly InputActionMap m_Ship;
+    // ship
+    private readonly InputActionMap m_ship;
     private IShipActions m_ShipActionsCallbackInterface;
-    private readonly InputAction m_Ship_Surge;
-    private readonly InputAction m_Ship_Yaw;
+    private readonly InputAction m_ship_forward;
+    private readonly InputAction m_ship_yaw;
     public struct ShipActions
     {
         private @PlayerActions m_Wrapper;
         public ShipActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Surge => m_Wrapper.m_Ship_Surge;
-        public InputAction @Yaw => m_Wrapper.m_Ship_Yaw;
-        public InputActionMap Get() { return m_Wrapper.m_Ship; }
+        public InputAction @forward => m_Wrapper.m_ship_forward;
+        public InputAction @yaw => m_Wrapper.m_ship_yaw;
+        public InputActionMap Get() { return m_Wrapper.m_ship; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
@@ -215,35 +215,35 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ShipActionsCallbackInterface != null)
             {
-                @Surge.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnSurge;
-                @Surge.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnSurge;
-                @Surge.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnSurge;
-                @Yaw.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnYaw;
-                @Yaw.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnYaw;
-                @Yaw.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnYaw;
+                @forward.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnForward;
+                @forward.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnForward;
+                @forward.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnForward;
+                @yaw.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnYaw;
+                @yaw.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnYaw;
+                @yaw.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnYaw;
             }
             m_Wrapper.m_ShipActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Surge.started += instance.OnSurge;
-                @Surge.performed += instance.OnSurge;
-                @Surge.canceled += instance.OnSurge;
-                @Yaw.started += instance.OnYaw;
-                @Yaw.performed += instance.OnYaw;
-                @Yaw.canceled += instance.OnYaw;
+                @forward.started += instance.OnForward;
+                @forward.performed += instance.OnForward;
+                @forward.canceled += instance.OnForward;
+                @yaw.started += instance.OnYaw;
+                @yaw.performed += instance.OnYaw;
+                @yaw.canceled += instance.OnYaw;
             }
         }
     }
-    public ShipActions @Ship => new ShipActions(this);
+    public ShipActions @ship => new ShipActions(this);
 
-    // Cannon
-    private readonly InputActionMap m_Cannon;
+    // cannon
+    private readonly InputActionMap m_cannon;
     private ICannonActions m_CannonActionsCallbackInterface;
     public struct CannonActions
     {
         private @PlayerActions m_Wrapper;
         public CannonActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputActionMap Get() { return m_Wrapper.m_Cannon; }
+        public InputActionMap Get() { return m_Wrapper.m_cannon; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
@@ -259,16 +259,16 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
             }
         }
     }
-    public CannonActions @Cannon => new CannonActions(this);
+    public CannonActions @cannon => new CannonActions(this);
 
-    // Menu
-    private readonly InputActionMap m_Menu;
+    // menu
+    private readonly InputActionMap m_menu;
     private IMenuActions m_MenuActionsCallbackInterface;
     public struct MenuActions
     {
         private @PlayerActions m_Wrapper;
         public MenuActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public InputActionMap Get() { return m_Wrapper.m_menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
@@ -284,7 +284,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
             }
         }
     }
-    public MenuActions @Menu => new MenuActions(this);
+    public MenuActions @menu => new MenuActions(this);
     private int m_PlaystationDualShockcontrollerSchemeIndex = -1;
     public InputControlScheme PlaystationDualShockcontrollerScheme
     {
@@ -323,7 +323,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     }
     public interface IShipActions
     {
-        void OnSurge(InputAction.CallbackContext context);
+        void OnForward(InputAction.CallbackContext context);
         void OnYaw(InputAction.CallbackContext context);
     }
     public interface ICannonActions

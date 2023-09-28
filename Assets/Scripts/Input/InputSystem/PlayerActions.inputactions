@@ -2,11 +2,11 @@
     "name": "PlayerActions",
     "maps": [
         {
-            "name": "Ship",
+            "name": "ship",
             "id": "6a2b60fa-e516-408d-a67a-5bf3c7dfde75",
             "actions": [
                 {
-                    "name": "Surge",
+                    "name": "forward",
                     "type": "Value",
                     "id": "ac4d348b-03f8-447f-abb9-b23641e3ba96",
                     "expectedControlType": "Axis",
@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Yaw",
+                    "name": "yaw",
                     "type": "Value",
                     "id": "3cc2585c-00e9-495a-915e-d1b3b15e44bb",
                     "expectedControlType": "Axis",
@@ -32,7 +32,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Yaw",
+                    "action": "yaw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -43,20 +43,20 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox controller;Nintendo Pro controller;Playstation DualShock controller",
-                    "action": "Surge",
+                    "action": "forward",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "Cannon",
+            "name": "cannon",
             "id": "912df182-72a1-47d3-964b-8d1412da2ea7",
             "actions": [],
             "bindings": []
         },
         {
-            "name": "Menu",
+            "name": "menu",
             "id": "c5541d30-f4d3-4e69-8569-198f8b81c856",
             "actions": [],
             "bindings": []
