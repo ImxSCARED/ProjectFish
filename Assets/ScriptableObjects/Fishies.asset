@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ca211c19106d44d8cdba677523abd0, type: 3}
+  m_Name: Fishies
+  m_EditorClassIdentifier: 
+  smallFish:
+  - name: TheIDKFish
+    fishBody: {fileID: 5656121995228108569, guid: 8dd781dd3a2f44a4aa2f3051cebc29f5, type: 3}
+    fishIcon: {fileID: 2847973472065971880, guid: 4cb45f754306086489eecb7cdf68c972, type: 3}
+  mediumFish:
+  - name: HASHDA
+    fishBody: {fileID: 7354146127528092065, guid: f312e4267f7ded941b3256592f206c14, type: 3}
+    fishIcon: {fileID: 8499889560913872026, guid: c3638641d35b86c47a6e9ca98b205faa, type: 3}
+  largeFish:
+  - name: ADSDASDASDASDASD
+    fishBody: {fileID: 2589726624690567155, guid: 9bedc62034fc66b4db1a4b0853238dfb, type: 3}
+    fishIcon: {fileID: 4182847275158971350, guid: c57aa9e6b144c5d47931be2093961ebe, type: 3}
