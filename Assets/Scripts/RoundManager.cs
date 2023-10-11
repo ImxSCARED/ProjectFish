@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
@@ -19,10 +20,19 @@ public class RoundManager : MonoBehaviour
     public List<PlayerManager> playeList;
     float timeTillActive;
 
+    PlayerConfigurationManager configManager;
+
     private void Start()
+    {
+        configManager = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerConfigurationManager>();
+        configManager.GameStart();
+    }
+
+    private void Awake()
     {
         RoundStart();
     }
+
     public void RoundStart()
     {
         timerOn = true;
@@ -32,8 +42,8 @@ public class RoundManager : MonoBehaviour
     }
     public void RoundEnd()
     {
-        tmpTimer.transform.parent.parent.gameObject.SetActive(false);
         ShowLeaderBoard();
+        gameObject.SetActive(false);
     }
     public void UpdateTimer(float currentTime)
     {

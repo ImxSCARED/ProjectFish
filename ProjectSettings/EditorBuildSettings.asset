@@ -4,6 +4,15 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LoadScreen.unity
+    guid: 7ef636e3f233497488c810ded5c8f589
+  - enabled: 1
+    path: Assets/Scenes/MovementTest.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: f2f5f0e886cf45746bb3ce643c995b88
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9dc112c775ed83c49a71abc183ed4019, type: 2}

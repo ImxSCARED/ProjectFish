@@ -15,11 +15,9 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     public static PlayerConfigurationManager instance { get; private set; }
 
-    public GameObject playerPrefab;
-
-    private void Awake()
+    private void Start()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(instance);
@@ -48,7 +46,7 @@ public class PlayerConfigurationManager : MonoBehaviour
     public void HandlePlayerJoin(PlayerInput pi)
     {
         Debug.Log("Player joined: " + pi.playerIndex);
-        pi.transform.SetParent(transform);
+        DontDestroyOnLoad(pi.gameObject);
         if(!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
             playerConfigs.Add(new PlayerCongifuration(pi));
@@ -63,6 +61,7 @@ public class PlayerConfigurationManager : MonoBehaviour
             if (allReadyTimer < 0)
             {
                 SceneManager.LoadScene("SampleScene");
+                playerConfigs.All(p => p.IsReady = false); // Set ready to false so we only load the scene once
             }    
         }
         else
@@ -73,8 +72,8 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         foreach(var player in playerConfigs)
         {
-            GameObject playerController = Instantiate(playerPrefab, transform);
-            player.Input.camera = playerPrefab.GetComponentInChildren<Camera>();
+            player.Input.camera.gameObject.SetActive(true);
+            player.Input.SwitchCurrentActionMap("Player");
         }
     }
 }

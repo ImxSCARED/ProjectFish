@@ -31,7 +31,29 @@
                     "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Playstation DualShock controller;Xbox controller;Nintendo Pro controller",
+                    "action": "yaw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "592512ae-f1f1-4451-afa7-77d083496edb",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard (Testing)",
+                    "action": "yaw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9536634c-222a-4d17-bc31-8985e7240d8b",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "Keyboard (Testing)",
                     "action": "yaw",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -43,6 +65,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox controller;Nintendo Pro controller;Playstation DualShock controller",
+                    "action": "forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36a73862-2df7-4acb-98a7-7dbc4e70728d",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard (Testing)",
+                    "action": "forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "935370e3-3055-4ad6-9451-cec9a08da94f",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "Keyboard (Testing)",
                     "action": "forward",
                     "isComposite": false,
                     "isPartOfComposite": false
