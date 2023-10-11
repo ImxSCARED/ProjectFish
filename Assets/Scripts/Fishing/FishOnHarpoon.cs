@@ -41,7 +41,7 @@ public class FishOnHarpoon : MonoBehaviour
                 cannonOrigin.HarpoonHitFish(hitFish);
 
                 GameObject hookedFish = Instantiate(hitFish.theFish.fishBody, Vector3.zero, Quaternion.identity);
-                hookedFish.transform.SetParent(transform.parent, true);
+                hookedFish.transform.SetParent(transform, true);
                 hookedFish.transform.localPosition = Vector3.zero;
                 hookedFish.transform.localRotation = Quaternion.identity;
 
@@ -61,7 +61,7 @@ public class FishOnHarpoon : MonoBehaviour
                 {
                     cannonOrigin.HarpoonReturned(false);
                 }
-                Destroy(transform.parent.gameObject);
+                Destroy(transform.gameObject);
             }   
         }
         

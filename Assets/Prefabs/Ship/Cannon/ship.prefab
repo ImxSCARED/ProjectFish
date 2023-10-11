@@ -790,7 +790,7 @@ MonoBehaviour:
   fireClip: {fileID: 8300000, guid: 036d2f8193fabed449122660a122bdd6, type: 3}
   loadClip: {fileID: 8300000, guid: 46d047e1ec656d3458f8503709816318, type: 3}
   cannonBall: {fileID: 4437684519634243953, guid: fda22f74317df224495e66ef69996f7f, type: 3}
-  harpoon: {fileID: 6112060783141023751, guid: bb9c341b685777f479eab2a5a9cbc36f, type: 3}
+  harpoon: {fileID: 6508107632809933013, guid: a56d2336a89287a4d8185b44e49c3fa2, type: 3}
   force: 30
   m_playerInput: {fileID: 7918009857468327981}
   whichCannon: EnterLeftCannon
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   fireClip: {fileID: 8300000, guid: 036d2f8193fabed449122660a122bdd6, type: 3}
   loadClip: {fileID: 8300000, guid: 46d047e1ec656d3458f8503709816318, type: 3}
   cannonBall: {fileID: 4437684519634243953, guid: fda22f74317df224495e66ef69996f7f, type: 3}
-  harpoon: {fileID: 6112060783141023751, guid: bb9c341b685777f479eab2a5a9cbc36f, type: 3}
+  harpoon: {fileID: 6508107632809933013, guid: a56d2336a89287a4d8185b44e49c3fa2, type: 3}
   force: 30
   m_playerInput: {fileID: 7918009857468327981}
   whichCannon: EnterRightCannon

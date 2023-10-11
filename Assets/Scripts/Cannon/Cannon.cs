@@ -298,7 +298,7 @@ public class Cannon : MonoBehaviour
                 currentHarpoon.returning = true;
                 currentHarpoon.rb.Sleep();
                 currentHarpoon.rb.isKinematic = true;
-                currentHarpoon.transform.position = Vector3.MoveTowards(currentHarpoon.transform.position, projectileStart.position, 0.05f);
+                currentHarpoon.transform.position = Vector3.MoveTowards(currentHarpoon.transform.position, projectileStart.position, 25f * Time.deltaTime);
             }
         }
     }

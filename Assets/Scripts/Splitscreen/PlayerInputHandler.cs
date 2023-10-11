@@ -8,12 +8,12 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerCongifuration playerConfig;
     private Cannon cannon;
 
-    private ConceptMechanics controls;
+    private GameActions controls;
     [SerializeField] 
     private void Awake()
     {
         cannon = GetComponent<Cannon>();
-        controls = new ConceptMechanics();
+        controls = new GameActions();
     }
 
     //public void initializePlayer(PlayerCongifuration pc)
