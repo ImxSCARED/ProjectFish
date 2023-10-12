@@ -10,16 +10,19 @@ public class InputManager : MonoBehaviour
     PlayerInput m_playerInput;
     [SerializeField]
     MovementController m_playerController;
-
+    [SerializeField]
+    Firing m_playerFire;
     // --CODE VARIABLES--
     InputAction m_forwardAction;
     InputAction m_yawAction;
+    InputAction m_fireAction;
 
     // --UNITY METHODS--
     void Awake()
     {
-        m_forwardAction = m_playerInput.actions["forward"];
-        m_yawAction = m_playerInput.actions["yaw"];
+        m_forwardAction = m_playerInput.actions["Forward"];
+        m_yawAction = m_playerInput.actions["Yaw"];
+        m_fireAction = m_playerInput.actions["Fire"];
     }
 
     void FixedUpdate()
@@ -32,6 +35,12 @@ public class InputManager : MonoBehaviour
         if (m_yawAction.inProgress)
         {
             m_playerController.Turn(m_yawAction.ReadValue<float>());
+        }
+
+        if (m_fireAction.WasPressedThisFrame())
+        {
+            Debug.Log("Huh");
+            m_playerFire.FireCannons();
         }
     }
 }
