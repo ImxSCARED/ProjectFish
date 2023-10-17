@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
@@ -14,10 +15,18 @@ public class BehaviourTreeScriptableObject : ScriptableObject
         m_root = new();
     }
 
-    [OnOpenAsset]
+    [OnOpenAsset(1)]
     public static bool OnOpenAsset(int instanceID, int line)
     {
-        BehaviourTreeEditor.OpenWindow();
+        string assetPath = AssetDatabase.GetAssetPath(instanceID);
+        bool isBTAsset = AssetDatabase.LoadAssetAtPath<BehaviourTreeScriptableObject>(assetPath) != null;
+
+        if (isBTAsset)
+        {
+            BehaviourTreeEditor.OpenWindow();
+            return true;
+        }
+
         return false;
     }
 }
