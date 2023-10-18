@@ -15,10 +15,10 @@ public class MovementController : MonoBehaviour
     float m_turnRate;
     [SerializeField]
     float m_friction;
-
-    // --CODE VARIABLES--
+    [SerializeField]
     Rigidbody m_rigidbody;
 
+    // --CODE VARIABLES--
     Quaternion m_rotation;
     float m_rotationEuler;
 
@@ -28,7 +28,7 @@ public class MovementController : MonoBehaviour
     // --UNITY METHODS--
     void Awake()
     {
-        m_rigidbody = GetComponent<Rigidbody>();
+        //m_rigidbody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
