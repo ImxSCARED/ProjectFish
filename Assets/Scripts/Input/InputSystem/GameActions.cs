@@ -98,6 +98,15 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb81fdde-2918-4133-849d-3f53045fef39"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -318,6 +327,17 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Horn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a15b645-b128-442e-97b5-2fc16ba4f136"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard (Testing)"",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -897,6 +917,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         m_Player_EnterRightCannon = m_Player.FindAction("EnterRightCannon", throwIfNotFound: true);
         m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
         m_Player_Horn = m_Player.FindAction("Horn", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -976,6 +997,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_EnterRightCannon;
     private readonly InputAction m_Player_SwitchWeapon;
     private readonly InputAction m_Player_Horn;
+    private readonly InputAction m_Player_Dash;
     public struct PlayerActions
     {
         private @GameActions m_Wrapper;
@@ -988,6 +1010,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         public InputAction @EnterRightCannon => m_Wrapper.m_Player_EnterRightCannon;
         public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
         public InputAction @Horn => m_Wrapper.m_Player_Horn;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1021,6 +1044,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @Horn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHorn;
                 @Horn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHorn;
                 @Horn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHorn;
+                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1049,6 +1075,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @Horn.started += instance.OnHorn;
                 @Horn.performed += instance.OnHorn;
                 @Horn.canceled += instance.OnHorn;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -1204,6 +1233,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         void OnEnterRightCannon(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
         void OnHorn(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

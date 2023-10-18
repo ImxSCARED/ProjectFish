@@ -15,6 +15,10 @@ public class MovementController : MonoBehaviour
     float m_turnRate;
     [SerializeField]
     float m_friction;
+    [SerializeField]
+    float m_dashModifier;
+    [SerializeField]
+    float m_dashDuration;
 
     // --CODE VARIABLES--
     Rigidbody m_rigidbody;
@@ -25,10 +29,17 @@ public class MovementController : MonoBehaviour
     float m_movementDirection; // 1D direction (forward or backward) of movement (-1 to 1)
     float m_maxVelocity; // actual max velocity, depending on if we're moiving forward or backward
 
+    float m_dashTimer;
+
+    bool m_dashHappening;
+
     // --UNITY METHODS--
     void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody>();
+
+        m_dashTimer = 0;
+        m_dashHappening = false;
     }
 
     void FixedUpdate()
@@ -36,7 +47,7 @@ public class MovementController : MonoBehaviour
         // --GLOBAL VARIABLES--
         // direction forward or backward
         m_movementDirection = Mathf.Sign(Vector3.Dot(m_rigidbody.velocity, transform.forward));
-        m_maxVelocity = m_movementDirection > 0 ? m_maxForwardVelocity : m_maxBackwardVelocity;
+        m_maxVelocity = (m_movementDirection > 0 ? m_maxForwardVelocity : m_maxBackwardVelocity) * (m_dashHappening ? m_dashModifier : 1);
 
         // --FRICTION--
         // if friction would cause us to shoot past 0, just set velocity to 0
@@ -47,6 +58,16 @@ public class MovementController : MonoBehaviour
         else
         {
             m_rigidbody.AddForce(-m_friction * m_movementDirection * transform.forward);
+        }
+
+        if (m_dashTimer > 0)
+        {
+            m_dashTimer -= Time.deltaTime;
+            m_rigidbody.velocity = transform.forward * m_maxVelocity;
+        }
+        else if (m_dashHappening)
+        {
+            m_dashHappening = false;
         }
     }
 
@@ -67,6 +88,15 @@ public class MovementController : MonoBehaviour
         }
 
         m_rigidbody.AddForce(velocity * transform.forward);
+    }
+
+    public void Dash()
+    {
+        if (m_dashTimer <= 0)
+        {
+            m_dashTimer = m_dashDuration;
+            m_dashHappening = true;
+        }
     }
 
     /// <summary>

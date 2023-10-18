@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 public class InputManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class InputManager : MonoBehaviour
     // --CODE VARIABLES--
     InputAction m_forwardAction;
     InputAction m_yawAction;
+    InputAction m_dashAction;
     InputAction m_fireAction;
 
     // --UNITY METHODS--
@@ -22,7 +24,10 @@ public class InputManager : MonoBehaviour
     {
         m_forwardAction = m_playerInput.actions["Forward"];
         m_yawAction = m_playerInput.actions["Yaw"];
+        m_dashAction = m_playerInput.actions["Dash"];
         m_fireAction = m_playerInput.actions["Fire"];
+
+        m_dashAction.performed += Dash;
     }
 
     void FixedUpdate()
@@ -42,5 +47,10 @@ public class InputManager : MonoBehaviour
             Debug.Log("Huh");
             m_playerFire.FireCannons();
         }
+    }
+
+    void Dash(CallbackContext context)
+    {
+        m_playerController.Dash();
     }
 }

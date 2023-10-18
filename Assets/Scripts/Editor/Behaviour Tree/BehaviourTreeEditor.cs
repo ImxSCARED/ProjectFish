@@ -5,6 +5,29 @@ using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public class NodeWindow
+{
+    IBehaviourNode m_node;
+
+    Rect m_window;
+
+    public NodeWindow(IBehaviourNode m_node, Rect window)
+    {
+        m_window = window;
+    }
+
+    public void Rename(string name)
+    {
+        m_node.Name = name;
+    }
+
+    public void Move(Vector2 newPos)
+    {
+        m_window.x = newPos.x;
+        m_window.y = newPos.y;
+    }
+}
+
 public class BehaviourTreeEditor : EditorWindow
 {
     List<Rect> m_windows = new List<Rect>();
@@ -15,14 +38,22 @@ public class BehaviourTreeEditor : EditorWindow
         BehaviourTreeEditor editor = GetWindow<BehaviourTreeEditor>();
         editor.titleContent = new GUIContent("Behaviour Tree");
 
-        editor.Init();
+        //editor.Init();
     }
 
-    private void Init()
+    public static void OpenWindow(string treePath)
     {
-        m_windows.Add(new Rect(10, 10, 100, 100));
-        m_windows.Add(new Rect(200, 10, 354, 23));
-        m_windows.Add(new Rect(10, 200, 144, 200));
+        BehaviourTreeEditor editor = GetWindow<BehaviourTreeEditor>();
+        editor.titleContent = new GUIContent("Behaviour Tree");
+
+        editor.LoadTree(treePath);
+    }
+
+    private void LoadTree(string treePath)
+    {
+        BehaviourTreeSO treeObject = AssetDatabase.LoadAssetAtPath<BehaviourTreeSO>(treePath);
+
+        
     }
 
     public void CreateGUI()

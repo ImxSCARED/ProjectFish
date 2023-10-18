@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
 
-[CustomEditor(typeof(BehaviourTreeScriptableObject))]
+[CustomEditor(typeof(BehaviourTreeSO))]
 public class BehaviourTreeInspector : Editor
 {
     public VisualTreeAsset m_inspectorXML;

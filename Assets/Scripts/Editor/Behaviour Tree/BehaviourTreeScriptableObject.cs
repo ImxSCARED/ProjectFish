@@ -5,7 +5,7 @@ using UnityEditor.Callbacks;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Behaviour Tree", menuName = "BehaviourTree/BehaviourTreeScriptableObject", order = 1)]
-public class BehaviourTreeScriptableObject : ScriptableObject
+public class BehaviourTreeSO : ScriptableObject
 {
     public RootNode m_root;
 
@@ -19,7 +19,7 @@ public class BehaviourTreeScriptableObject : ScriptableObject
     public static bool OnOpenAsset(int instanceID, int line)
     {
         string assetPath = AssetDatabase.GetAssetPath(instanceID);
-        bool isBTAsset = AssetDatabase.LoadAssetAtPath<BehaviourTreeScriptableObject>(assetPath) != null;
+        bool isBTAsset = AssetDatabase.LoadAssetAtPath<BehaviourTreeSO>(assetPath) != null;
 
         if (isBTAsset)
         {
