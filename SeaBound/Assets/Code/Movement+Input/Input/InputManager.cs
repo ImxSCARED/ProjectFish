@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
         m_fireAction = m_playerInput.actions["Fire"];
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (m_forwardAction.inProgress)
         {
