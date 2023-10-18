@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
         m_fireAction = m_playerInput.actions["Fire"];
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (m_forwardAction.inProgress)
         {
@@ -39,7 +39,6 @@ public class InputManager : MonoBehaviour
 
         if (m_fireAction.WasPressedThisFrame())
         {
-            Debug.Log("Huh");
             m_playerFire.FireCannons();
         }
     }

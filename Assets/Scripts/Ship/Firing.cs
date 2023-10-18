@@ -10,14 +10,23 @@ public class Firing : MonoBehaviour
     [SerializeField] private Transform lCannonBallStart;
     [SerializeField] private Transform rCannonBallStart;
     [SerializeField] private GameObject cannonBall;
-    private Rigidbody projecileRB;
+
+    [SerializeField] private float force;
     public void FireCannons()
     {
-        GameObject currentProjectile = Instantiate(cannonBall);
-        cannonBall.transform.position = lCannonBallStart.position;
-
-        projecileRB = cannonBall.GetComponent<Rigidbody>();
-        projecileRB.AddForce((lCannonBallStart.position - lCannonRange.EnemiesInRange[0].transform.position) * 30, ForceMode.Impulse);
-
+        if (lCannonRange.EnemiesInRange.Count > 0)
+        {
+            GameObject currentProjectile = Instantiate(cannonBall, lCannonBallStart.position, Quaternion.identity);
+            Vector3 direction = lCannonRange.EnemiesInRange[0].transform.position - lCannonBallStart.position;
+            direction.Normalize();
+            currentProjectile.GetComponent<Projectile>().Spawn(direction, force);
+        }
+        if (rCannonRange.EnemiesInRange.Count > 0)
+        {
+            GameObject currentProjectile = Instantiate(cannonBall, rCannonBallStart.position, Quaternion.identity);
+            Vector3 direction = rCannonRange.EnemiesInRange[0].transform.position - rCannonBallStart.position;
+            direction.Normalize();
+            currentProjectile.GetComponent<Projectile>().Spawn(direction, force);
+        }
     }
 }
