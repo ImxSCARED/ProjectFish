@@ -202,6 +202,17 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""aee43343-f02f-4b89-84d5-ca15b1b08fa0"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard (Testing)"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9e515796-d42e-4042-bcdc-afd67e2dd35f"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",

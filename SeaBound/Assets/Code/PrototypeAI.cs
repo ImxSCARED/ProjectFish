@@ -15,11 +15,27 @@ public class PrototypeAI : MonoBehaviour
 
     void Update()
     {
-        TurnTowardPoint(m_player.transform.position);
+        RaycastHit hit;
+        Physics.Raycast(transform.position, transform.forward, out hit, 60f);
 
+        if (hit.transform != null)
+        {
+            TurnTowardPoint(-hit.transform.position);
+        }
+        else
+        {
+            float distToPlayer = (m_player.transform.position - transform.position).magnitude;
+            if (distToPlayer < 80f)
+            {
+                TurnTowardPoint(-m_player.transform.position);
+            }
+            else
+            {
+                TurnTowardPoint(m_player.transform.position);
+            }
+        }
 
-        float clampedDistToPlayer = Mathf.Clamp((m_player.transform.position - transform.position).magnitude, 0, 80f);
-        m_movementController.AddVelocity(clampedDistToPlayer / 80);
+        m_movementController.AddVelocity(1);
     }
 
     /// <summary>
