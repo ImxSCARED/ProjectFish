@@ -6,26 +6,27 @@ public class MovementController : MonoBehaviour
 {
     // --EDITOR VARIABLES--
     [SerializeField]
+    Rigidbody m_rigidbody;
+    [SerializeField]
     float m_maxVelocity;
     [SerializeField]
     float m_speed;
     [SerializeField]
     float m_brakeSpeed;
     [SerializeField]
+    float m_maxRotationalVelocity;
+    [SerializeField]
     float m_turnRate;
     [SerializeField]
     float m_friction;
     [SerializeField]
-    Rigidbody m_rigidbody;
+    float m_rotationalFriction;
 
     // --CODE VARIABLES--
-    Quaternion m_rotation;
+    Vector2 m_velocity;
+
+    float m_rotationalVelocity;
     float m_rotationEuler;
-
-    float m_movementDirection; // 1D direction (forward or backward) of movement (-1 to 1)
-    float m_brakeVelocity; // actual max velocity, depending on if we're moiving forward or backward
-
-    float m_velocity;
 
     // --UNITY METHODS--
     void Awake()
@@ -36,21 +37,35 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         // --VELOCITY CAP--
-        if (m_velocity > m_maxVelocity)
+        // Cap rotation velocity
+        // m_rotationVelocity can be positive or negative, so this is designed to be agnostic and apply the correct cap regardless
+        if (Mathf.Abs(m_rotationalVelocity) > m_maxRotationalVelocity)
         {
-            m_velocity = m_maxVelocity;
+            m_rotationalVelocity = Mathf.Sign(m_rotationalVelocity) * m_maxRotationalVelocity;
         }
 
+        // Cap movement velocity
+        m_velocity.y = Mathf.Clamp(m_velocity.y, 0, m_maxVelocity);
+
         // --FRICTION--
-        // if friction would cause us to shoot past 0, just set velocity to 0
-        if (m_velocity - (m_friction * Time.deltaTime) < 0)
-        {
-            m_velocity = 0;
-        }
-        else
-        {
-            m_velocity -= m_friction * Time.deltaTime;
-        }
+        // Apply turning friction
+        m_rotationalVelocity = ApplyFriction(m_rotationalVelocity, m_rotationalFriction);
+
+        // Apply movement friction
+        m_velocity.x = ApplyFriction(m_velocity.x, m_friction);
+        m_velocity.y = ApplyFriction(m_velocity.y, m_friction);
+
+
+        // --MOVE PLAYER--
+        // Rotate the player
+        m_rotationEuler += m_rotationalVelocity;                              // Apply velocity to euler rotation
+        m_rotationEuler %= 360;                                             // Stop euler from getting too big
+
+        Quaternion rotation = Quaternion.Euler(0, m_rotationEuler, 0);      // Convert into quaternion
+        m_rigidbody.MoveRotation(rotation);                                 // Apply to rigidbody
+
+        // Move player forward
+        m_rigidbody.MovePosition(transform.position + transform.forward * m_velocity.y * Time.deltaTime);
     }
 
     // --PUBLIC METHODS--
@@ -60,36 +75,38 @@ public class MovementController : MonoBehaviour
     /// <param name="magnitude">The force by which speed is applied to the player's velocity.</param>
     public void AddVelocity(float magnitude = 1)
     {
-        float velocity = magnitude * m_speed;
+        float velocity = magnitude * (magnitude > 0 ? m_speed : m_brakeSpeed);
 
-        float amountOverMax = m_rigidbody.velocity.magnitude + Mathf.Abs(velocity) - (m_maxVelocity * Mathf.Abs(magnitude));
-        if (amountOverMax > 0)
-        {
-            velocity -= amountOverMax * Mathf.Sign(magnitude);
-        }
-
-        m_rigidbody.AddForce(velocity * transform.forward);
+        m_velocity.y += velocity * Time.deltaTime;
     }
 
     /// <summary>
-    /// Turns the object via rotation.
+    /// Adds some velocity, controlled by the player's speed, to the object's current turning velocity.
     /// </summary>
-    /// <param name="angle">How sharply the boat should turn (-1 to 1).</param>
-    public void Turn(float angle)
+    /// <param name="magnitude">How sharply the boat should turn (-1 to 1).</param>
+    public void Turn(float magnitude)
     {
-        float eulerTurn = angle * m_turnRate * Time.deltaTime;
-        Quaternion turn = Quaternion.Euler(0, eulerTurn, 0);
+        float eulerTurn = magnitude * m_turnRate * Time.deltaTime;
 
-        m_rotationEuler += eulerTurn;
-        m_rotation = Quaternion.Euler(0, m_rotationEuler, 0);
-
-        m_rigidbody.MoveRotation(m_rotation);
-
-        m_rigidbody.velocity = turn * m_rigidbody.velocity;
+        m_rotationalVelocity += eulerTurn;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /// <summary>
+    /// Brings a value closer to 0 by some amount determined by friction
+    /// </summary>
+    /// <param name="initialSpeed">The speed before friction is applied</param>
+    /// <param name="friction">The amount to apply to initialSpeed</param>
+    /// <returns>The speed after friction is applied</returns>
+    private float ApplyFriction(float initialSpeed, float friction)
     {
-        
+        // Sign agnostic - if positive, this will subtract toward 0, if negative, it will add toward 0
+        if (Mathf.Abs(initialSpeed) - (friction * Time.deltaTime) < 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return initialSpeed - Mathf.Sign(initialSpeed) * friction * Time.deltaTime;
+        }
     }
 }
