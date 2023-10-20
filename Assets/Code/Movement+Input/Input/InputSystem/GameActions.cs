@@ -55,6 +55,15 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""MinigameMover"",
+                    ""type"": ""Value"",
+                    ""id"": ""b494d0f7-17c1-4c05-97ab-688505661309"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Fire"",
                     ""type"": ""Button"",
                     ""id"": ""0e8abc8d-b948-40ac-a8f8-9da9ae5f34e8"",
@@ -268,6 +277,17 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""80b6bacf-cd19-495d-b37b-5d726be7cb48"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""db88756f-16db-407f-a8bd-9d2189079f15"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
@@ -329,6 +349,50 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Horn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf559c81-fabc-4b49-a0dc-2cecf6f46f98"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MinigameMover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2fa99415-e6ee-486b-8551-32471f0f3281"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MinigameMover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f74ed127-ebbe-4905-b4df-5b0bcce3366d"",
+                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MinigameMover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d7a0793-8399-4f6b-8f19-d007f9adc5ce"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard (Testing)"",
+                    ""action"": ""MinigameMover"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -903,6 +967,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         m_Player_Forward = m_Player.FindAction("Forward", throwIfNotFound: true);
         m_Player_Yaw = m_Player.FindAction("Yaw", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+        m_Player_MinigameMover = m_Player.FindAction("MinigameMover", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_EnterLeftCannon = m_Player.FindAction("EnterLeftCannon", throwIfNotFound: true);
         m_Player_EnterRightCannon = m_Player.FindAction("EnterRightCannon", throwIfNotFound: true);
@@ -982,6 +1047,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Forward;
     private readonly InputAction m_Player_Yaw;
     private readonly InputAction m_Player_Look;
+    private readonly InputAction m_Player_MinigameMover;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_EnterLeftCannon;
     private readonly InputAction m_Player_EnterRightCannon;
@@ -994,6 +1060,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         public InputAction @Forward => m_Wrapper.m_Player_Forward;
         public InputAction @Yaw => m_Wrapper.m_Player_Yaw;
         public InputAction @Look => m_Wrapper.m_Player_Look;
+        public InputAction @MinigameMover => m_Wrapper.m_Player_MinigameMover;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @EnterLeftCannon => m_Wrapper.m_Player_EnterLeftCannon;
         public InputAction @EnterRightCannon => m_Wrapper.m_Player_EnterRightCannon;
@@ -1017,6 +1084,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
+                @MinigameMover.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMinigameMover;
+                @MinigameMover.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMinigameMover;
+                @MinigameMover.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMinigameMover;
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
@@ -1045,6 +1115,9 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @MinigameMover.started += instance.OnMinigameMover;
+                @MinigameMover.performed += instance.OnMinigameMover;
+                @MinigameMover.canceled += instance.OnMinigameMover;
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
@@ -1210,6 +1283,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         void OnForward(InputAction.CallbackContext context);
         void OnYaw(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnMinigameMover(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnEnterLeftCannon(InputAction.CallbackContext context);
         void OnEnterRightCannon(InputAction.CallbackContext context);

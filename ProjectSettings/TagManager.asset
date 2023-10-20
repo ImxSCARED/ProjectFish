@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cannonball
   - Enemy
+  - Fish
   layers:
   - Default
   - TransparentFX
