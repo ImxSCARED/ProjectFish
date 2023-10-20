@@ -6,11 +6,11 @@ public class MovementController : MonoBehaviour
 {
     // --EDITOR VARIABLES--
     [SerializeField]
-    float m_maxForwardVelocity;
-    [SerializeField]
-    float m_maxBackwardVelocity;
+    float m_maxVelocity;
     [SerializeField]
     float m_speed;
+    [SerializeField]
+    float m_brakeSpeed;
     [SerializeField]
     float m_turnRate;
     [SerializeField]
@@ -23,39 +23,41 @@ public class MovementController : MonoBehaviour
     float m_rotationEuler;
 
     float m_movementDirection; // 1D direction (forward or backward) of movement (-1 to 1)
-    float m_maxVelocity; // actual max velocity, depending on if we're moiving forward or backward
+    float m_brakeVelocity; // actual max velocity, depending on if we're moiving forward or backward
+
+    float m_velocity;
 
     // --UNITY METHODS--
     void Awake()
     {
-        //m_rigidbody = GetComponent<Rigidbody>();
+
     }
 
     void FixedUpdate()
     {
-        // --GLOBAL VARIABLES--
-        // direction forward or backward
-        m_movementDirection = Mathf.Sign(Vector3.Dot(m_rigidbody.velocity, transform.forward));
-        m_maxVelocity = m_movementDirection > 0 ? m_maxForwardVelocity : m_maxBackwardVelocity;
+        // --VELOCITY CAP--
+        if (m_velocity > m_maxVelocity)
+        {
+            m_velocity = m_maxVelocity;
+        }
 
         // --FRICTION--
         // if friction would cause us to shoot past 0, just set velocity to 0
-        if (m_rigidbody.velocity.magnitude - (m_friction * Time.deltaTime) < 0)
+        if (m_velocity - (m_friction * Time.deltaTime) < 0)
         {
-            m_rigidbody.velocity = Vector3.zero;
+            m_velocity = 0;
         }
         else
         {
-            m_rigidbody.AddForce(-m_friction * m_movementDirection * transform.forward);
+            m_velocity -= m_friction * Time.deltaTime;
         }
     }
 
     // --PUBLIC METHODS--
-    // TODO: Figure out why this breaks when going backwards
     /// <summary>
-    /// Adds some velocity, controlled by m_speed, to the object's current velocity, without exceeding the velocity cap.
+    /// Adds some velocity, controlled by the player's speed, to the object's current velocity.
     /// </summary>
-    /// <param name="magnitude">The amount to multiply the velocity added by.</param>
+    /// <param name="magnitude">The force by which speed is applied to the player's velocity.</param>
     public void AddVelocity(float magnitude = 1)
     {
         float velocity = magnitude * m_speed;
@@ -84,5 +86,10 @@ public class MovementController : MonoBehaviour
         m_rigidbody.MoveRotation(m_rotation);
 
         m_rigidbody.velocity = turn * m_rigidbody.velocity;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }
