@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +12,13 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     MovementController m_playerController;
     [SerializeField]
-    Firing m_playerFire;
+    Fishing m_playerFish;
+
     // --CODE VARIABLES--
     InputAction m_forwardAction;
     InputAction m_yawAction;
     InputAction m_fireAction;
+    InputAction m_MMAction;
 
     // --UNITY METHODS--
     void Awake()
@@ -23,6 +26,7 @@ public class InputManager : MonoBehaviour
         m_forwardAction = m_playerInput.actions["Forward"];
         m_yawAction = m_playerInput.actions["Yaw"];
         m_fireAction = m_playerInput.actions["Fire"];
+        m_MMAction = m_playerInput.actions["MinigameMover"];
     }
 
     void Update()
@@ -39,8 +43,12 @@ public class InputManager : MonoBehaviour
 
         if (m_fireAction.WasPressedThisFrame())
         {
-            Debug.Log("Huh");
-            m_playerFire.FireCannons();
+            m_playerFish.FishMinigame();
+        }
+
+        if (m_MMAction.inProgress)
+        {
+            m_playerFish.MoveMM(m_MMAction.ReadValue<Vector2>());
         }
     }
 }
