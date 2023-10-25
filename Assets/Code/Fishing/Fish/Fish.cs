@@ -27,7 +27,7 @@ public class Fish : MonoBehaviour
     /// <summary>
     /// Based on tier, moves to a random node after a time limit to make fishing harder
     /// </summary>
-    public void FishMinigame(Transform[] hitboxNodes, bool isFishBeingReeled)
+    public void FishDash(Transform[] hitboxNodes, bool isFishBeingReeled)
     {
         timeBeforeAction += Time.deltaTime;
         switch (tier)
