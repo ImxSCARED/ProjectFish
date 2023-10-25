@@ -5,8 +5,8 @@ using UnityEngine;
 public class FishingHitbox : MonoBehaviour
 {
     public GameObject currentFish = null;
-    public Transform[] LeftPoints;
-    public Transform[] RightPoints;
+    public Transform[] leftPoints;
+    public Transform[] rightPoints;
 
     private void OnTriggerEnter(Collider collision)
     {

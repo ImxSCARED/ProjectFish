@@ -1,10 +1,10 @@
 using static FishProperties;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Fish : MonoBehaviour
 {
     [SerializeField] private FishProperties properties;
-    [SerializeField] private FishingHitbox hitbox;
     public FishTier tier;
 
     public FishEverything theFish;
@@ -15,6 +15,8 @@ public class Fish : MonoBehaviour
     [SerializeField] private float height = 3;
 
     private float timeBeforeAction = 0;
+    private float actionTime = 0;
+    private Transform fishingHitboxNode;
     private void Start()
     {
         theFish = properties.GetFish(tier);
@@ -22,40 +24,52 @@ public class Fish : MonoBehaviour
     private void Update()
     {    
     }
-
-    public void FishMinigame()
+    /// <summary>
+    /// Based on tier, moves to a random node after a time limit to make fishing harder
+    /// </summary>
+    public void FishMinigame(Transform[] hitboxNodes, bool isFishBeingReeled)
     {
         timeBeforeAction += Time.deltaTime;
         switch (tier)
         {
             case FishTier.SMALL:
-                if(timeBeforeAction < 3)
+                if(timeBeforeAction > 3)
                 {
-
-                }
-                else
-                {
-                    timeBeforeAction = 0;
+                    if (!fishingHitboxNode)
+                    {
+                        fishingHitboxNode = hitboxNodes[Random.Range(0, (int)hitboxNodes.Length - 1)];
+                    }
+                    actionTime += Time.deltaTime;
+                    if(actionTime < 1)
+                    {
+                        if (isFishBeingReeled)
+                        {
+                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, 3f * Time.deltaTime);
+                        }
+                        else
+                        {
+                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, 5f * Time.deltaTime);
+                        }
+                        
+                    }
+                    else
+                    {
+                        actionTime = 0;
+                        timeBeforeAction = 0;
+                        fishingHitboxNode = null;
+                    }
                 }
                 break;
             case FishTier.MEDIUM:
-                if (timeBeforeAction < 2)
+                if (timeBeforeAction > 2)
                 {
 
-                }
-                else
-                {
-                    timeBeforeAction = 0;
                 }
                 break;
             case FishTier.LARGE:
-                if (timeBeforeAction < 1)
+                if (timeBeforeAction > 1)
                 {
 
-                }
-                else
-                {
-                    timeBeforeAction = 0;
                 }
                 break;
         }

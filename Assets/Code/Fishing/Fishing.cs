@@ -10,6 +10,7 @@ public class Fishing : MonoBehaviour
     public CaptureCircle minigameBackground;
     public GameObject minigameMover;
 
+    private Fish currentFish;
     public bool fishing;
 
 
@@ -23,6 +24,7 @@ public class Fishing : MonoBehaviour
                 minigameMover.SetActive(true);
                 minigameMover.transform.position = fishingSpot.currentFish.transform.position;
                 minigameBackground.fishTransform = fishingSpot.currentFish.transform;
+                currentFish = fishingSpot.currentFish.GetComponent<Fish>();
             }
         }
     }
@@ -38,6 +40,7 @@ public class Fishing : MonoBehaviour
     {
         if (fishing)
         {
+            currentFish.FishMinigame(fishingSpot.rightPoints, minigameBackground.fishInCircle);
             if (fishingSpot.currentFish == null)
             {
                 Debug.Log("fish ran away");
@@ -48,6 +51,7 @@ public class Fishing : MonoBehaviour
     }
     public void MoveMM(Vector2 input)
     {
-        minigameMover.transform.position += new Vector3((input.x * Time.deltaTime) * 5, 0, (input.y * Time.deltaTime) * 5);
+        minigameMover.transform.position += minigameMover.transform.forward * (input.y * Time.deltaTime) * 5;
+        minigameMover.transform.position += minigameMover.transform.right * (input.x * Time.deltaTime) * 5;
     }
 }

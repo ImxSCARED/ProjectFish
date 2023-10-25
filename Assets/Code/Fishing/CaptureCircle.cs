@@ -8,7 +8,7 @@ public class CaptureCircle : MonoBehaviour
     public Transform fishTransform;
 
 
-    private bool fishInCircle;
+    public bool fishInCircle;
 
     private void Update()
     {
