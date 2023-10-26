@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,64 +9,49 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     Rigidbody m_rigidbody;
     [SerializeField]
+    MeshCollider m_hullCollider;
+    [SerializeField]
     float m_maxVelocity;
     [SerializeField]
-    float m_speed;
+    float m_mass;                           // In kilograms
     [SerializeField]
-    float m_brakeSpeed;
+    float m_maxRotationAxisDisplacement;    // In metres
     [SerializeField]
-    float m_maxRotationalVelocity;
-    [SerializeField]
-    float m_turnRate;
-    [SerializeField]
-    float m_friction;
-    [SerializeField]
-    float m_rotationalFriction;
+    float m_frictionCoefficient;
 
     // --CODE VARIABLES--
     Vector2 m_velocity;
-
     float m_rotationalVelocity;
-    float m_rotationEuler;
+
+    float m_rotationAxisDisplacement;
+
+    float m_centroidRotationalInertia;      // Required to calculate rotational inertia around some axis not in the centre
+    float m_rotationalInertia;
+
 
     // --UNITY METHODS--
     void Awake()
     {
+        m_centroidRotationalInertia = (1/12) * m_mass * (m_hullCollider.bounds.size.x * m_hullCollider.bounds.size.x +          // Ic = (1/12)m(l^2 + w^2)
+                                                         m_hullCollider.bounds.size.z * m_hullCollider.bounds.size.z);
 
     }
 
     void FixedUpdate()
     {
         // --VELOCITY CAP--
-        // Cap rotation velocity
-        // m_rotationVelocity can be positive or negative, so this is designed to be agnostic and apply the correct cap regardless
-        if (Mathf.Abs(m_rotationalVelocity) > m_maxRotationalVelocity)
+        // Cap movement velocity
+        // Accounts for diagonal movement
+        if (m_velocity.magnitude > m_maxVelocity)
         {
-            m_rotationalVelocity = Mathf.Sign(m_rotationalVelocity) * m_maxRotationalVelocity;
+            m_velocity.x = m_velocity.normalized.x * m_maxVelocity;
+            m_velocity.y = m_velocity.normalized.y * m_maxVelocity;
         }
 
-        // Cap movement velocity
-        m_velocity.y = Mathf.Clamp(m_velocity.y, 0, m_maxVelocity);
+        // --SET TURNING AXIS--
+        m_rotationAxisDisplacement = Mathf.Lerp(0, m_maxRotationAxisDisplacement, m_velocity.magnitude / m_maxVelocity);
 
-        // --FRICTION--
-        // Apply turning friction
-        m_rotationalVelocity = ApplyFriction(m_rotationalVelocity, m_rotationalFriction);
-
-        // Apply movement friction
-        m_velocity.x = ApplyFriction(m_velocity.x, m_friction);
-        m_velocity.y = ApplyFriction(m_velocity.y, m_friction);
-
-
-        // --MOVE PLAYER--
-        // Rotate the player
-        m_rotationEuler += m_rotationalVelocity;                              // Apply velocity to euler rotation
-        m_rotationEuler %= 360;                                             // Stop euler from getting too big
-
-        Quaternion rotation = Quaternion.Euler(0, m_rotationEuler, 0);      // Convert into quaternion
-        m_rigidbody.MoveRotation(rotation);                                 // Apply to rigidbody
-
-        // Move player forward
-        m_rigidbody.MovePosition(transform.position + transform.forward * m_velocity.y * Time.deltaTime);
+        m_rotationalInertia = m_centroidRotationalInertia + m_mass * (m_rotationAxisDisplacement * m_rotationAxisDisplacement); // I = Ic + md^2
     }
 
     // --PUBLIC METHODS--
@@ -77,7 +63,8 @@ public class MovementController : MonoBehaviour
     {
         float velocity = magnitude * (magnitude > 0 ? m_speed : m_brakeSpeed);
 
-        m_velocity.y += velocity * Time.deltaTime;
+        Vector2 forward2D = new(transform.forward.x, transform.forward.z);
+        m_velocity += velocity * Time.deltaTime * forward2D;
     }
 
     /// <summary>
@@ -100,7 +87,7 @@ public class MovementController : MonoBehaviour
     private float ApplyFriction(float initialSpeed, float friction)
     {
         // Sign agnostic - if positive, this will subtract toward 0, if negative, it will add toward 0
-        if (Mathf.Abs(initialSpeed) - (friction * Time.deltaTime) < 0)
+        if (Mathf.Abs(initialSpeed) - (friction * Time.deltaTime) <= 0)
         {
             return 0;
         }
