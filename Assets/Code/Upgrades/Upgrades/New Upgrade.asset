@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dadfbeb771021b48901f485db6ff63f, type: 3}
-  m_Name: New Fish Properties
+  m_Script: {fileID: 11500000, guid: f9c7abf4e6998cd47962c8e28abce3b9, type: 3}
+  m_Name: New Upgrade
   m_EditorClassIdentifier: 
-  smallFish:
-  - name: Fish
-    fishIcon: {fileID: 0}
-  mediumFish: []
-  largeFish: []
+  Name: Boat Move Speed
+  Description: Increases Acceleration, Max speed
+  Price: 5000
+  Increase: 200
+  Level: 0
+  MaxLevel: 3

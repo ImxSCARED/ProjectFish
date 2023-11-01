@@ -13,7 +13,10 @@ public class Fishing : MonoBehaviour
     private Fish currentFish;
     public bool fishing;
 
-
+    [Header("Exposed Variables")]
+    public int maxHarpoons;
+    public float fishWrangleSpeed;
+    public float hasdhashdhasd;
     public void FishMinigame()
     {
         if (!fishing)
@@ -41,7 +44,13 @@ public class Fishing : MonoBehaviour
         bounds = fishingSpot.GetComponent<MeshCollider>().bounds;
         if (fishing)
         {
-            
+            if (fishingSpot.currentFish == null)
+            {
+                Debug.Log("fish ran away");
+                fishing = false;
+                minigameMover.SetActive(false);
+                return;
+            }
             //Checks whether the fish is on the left or rightside of the boat, then give the fish the relative nodes to dash to
             Vector3 perp = Vector3.Cross(transform.forward, fishingSpot.currentFish.transform.position - transform.position);
             float dir = Vector3.Dot(perp, transform.up);
@@ -52,13 +61,6 @@ public class Fishing : MonoBehaviour
             else
             {
                 currentFish.FishDash(fishingSpot.leftPoints, minigameBackground.fishInCircle);
-            }
-
-            if (fishingSpot.currentFish == null)
-            {
-                Debug.Log("fish ran away");
-                fishing = false;
-                minigameMover.SetActive(false);
             }
         }
     }

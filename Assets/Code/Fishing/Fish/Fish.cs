@@ -33,7 +33,7 @@ public class Fish : MonoBehaviour
         switch (tier)
         {
             case FishTier.SMALL:
-                if(timeBeforeAction > 3)
+                if(timeBeforeAction > 2)
                 {
                     if (!fishingHitboxNode)
                     {
