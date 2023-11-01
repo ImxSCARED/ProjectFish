@@ -38,7 +38,7 @@ public class InputManager : MonoBehaviour
 
         if (m_yawAction.inProgress)
         {
-            m_playerController.Turn(m_yawAction.ReadValue<float>());
+            //m_playerController.Turn(m_yawAction.ReadValue<float>());
         }
 
         if (m_fireAction.WasPressedThisFrame())

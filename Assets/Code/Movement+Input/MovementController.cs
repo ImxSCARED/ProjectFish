@@ -13,20 +13,36 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     float m_maxVelocity;
     [SerializeField]
+    float m_speed;
+    [SerializeField]
+    float m_brakeSpeed;
+    [SerializeField]
     float m_mass;                           // In kilograms
     [SerializeField]
     float m_maxRotationAxisDisplacement;    // In metres
     [SerializeField]
-    float m_frictionCoefficient;
+    float m_turnResistance;
+    [SerializeField]
+    float m_rudderDragCoefficient;
+    [SerializeField]
+    float m_waterDensity;
+    [SerializeField]
+    float m_rudderSize;
 
     // --CODE VARIABLES--
     Vector2 m_velocity;
     float m_rotationalVelocity;
 
+    float m_acceleration;
+    float m_rotationalAcceleration;
+
     float m_rotationAxisDisplacement;
 
     float m_centroidRotationalInertia;      // Required to calculate rotational inertia around some axis not in the centre
     float m_rotationalInertia;
+
+    float m_rudderAngle;                    // In radians
+    float m_heading;                        // In radians
 
 
     // --UNITY METHODS--
@@ -52,22 +68,30 @@ public class MovementController : MonoBehaviour
         m_rotationAxisDisplacement = Mathf.Lerp(0, m_maxRotationAxisDisplacement, m_velocity.magnitude / m_maxVelocity);
 
         m_rotationalInertia = m_centroidRotationalInertia + m_mass * (m_rotationAxisDisplacement * m_rotationAxisDisplacement); // I = Ic + md^2
+
+
     }
 
     // --PUBLIC METHODS--
     /// <summary>
-    /// Adds some velocity, controlled by the player's speed, to the object's current velocity.
+    /// Increases the boat's acceleration.
     /// </summary>
-    /// <param name="magnitude">The force by which speed is applied to the player's velocity.</param>
-    public void AddVelocity(float magnitude = 1)
+    /// <param name="magnitude">The magnitude by which speed is applied to the player's acceleration.</param>
+    public void Accelerate(float magnitude = 1)
     {
-        float velocity = magnitude * (magnitude > 0 ? m_speed : m_brakeSpeed);
+        float acceleration = magnitude * (magnitude > 0 ? m_speed : -m_brakeSpeed);
+
+        velocity *= Time.deltaTime;
+        if (m_velocity.magnitude + (velocity * Time.deltaTime) < 0)
+        {
+            velocity = 0;
+        }
 
         Vector2 forward2D = new(transform.forward.x, transform.forward.z);
-        m_velocity += velocity * Time.deltaTime * forward2D;
+        m_velocity += velocity * forward2D;
     }
 
-    /// <summary>
+    /*/// <summary>
     /// Adds some velocity, controlled by the player's speed, to the object's current turning velocity.
     /// </summary>
     /// <param name="magnitude">How sharply the boat should turn (-1 to 1).</param>
@@ -95,5 +119,5 @@ public class MovementController : MonoBehaviour
         {
             return initialSpeed - Mathf.Sign(initialSpeed) * friction * Time.deltaTime;
         }
-    }
+    }*/
 }

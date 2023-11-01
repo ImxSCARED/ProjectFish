@@ -48,7 +48,7 @@ public class PrototypeAI : MonoBehaviour
 
         if (!(angleToPoint < m_offsetFromPlayer && angleToPoint > -m_offsetFromPlayer))
         {
-            m_movementController.Turn(Mathf.Sign(-angleToPoint));
+            //m_movementController.Turn(Mathf.Sign(-angleToPoint));
         }
     }
 
