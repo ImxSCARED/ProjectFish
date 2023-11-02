@@ -1,26 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool isDocked = false;
+
+    
+    public void Dock()
     {
-        
+        GetComponent<InputManager>().ChangeActionMap("UI");
+        isDocked = true;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SellFish()
     {
-        
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Dock")
-        {
-            Debug.Log("Worked");
-        }
     }
 }

@@ -110,7 +110,7 @@ Material:
     - _Distance: 1.01
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FoamAmount: 0.98
+    - _FoamAmount: 0.24
     - _FoamC: 2.36
     - _FoamCutoff: 2.77
     - _FoamScale: 26.6
@@ -118,7 +118,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _HighFreq: 27
+    - _HighFreq: 11.84
     - _Metallic: 0
     - _NormalStrength: 1
     - _OcclusionStrength: 1
@@ -135,8 +135,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _WaterBlend: -0.01
-    - _WaveAmp: 3
+    - _WaterBlend: 3.49
+    - _WaveAmp: 0.5
     - _WaveSpeed: 3.1
     - _WindQuality: 0
     - _WorkflowMode: 1
