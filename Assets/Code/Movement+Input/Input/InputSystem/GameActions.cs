@@ -146,10 +146,21 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a67d66ec-aa99-4d70-b871-c3b076c20d2f"",
-                    ""path"": ""<Gamepad>/leftStick/y"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox controller;Nintendo Pro controller;Playstation DualShock controller"",
+                    ""action"": ""Forward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dba148b9-2cc6-43b2-871e-78c16e570457"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": ""Invert"",
+                    ""groups"": ""Playstation DualShock controller;Xbox controller;Nintendo Pro controller"",
                     ""action"": ""Forward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -223,7 +234,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""9e515796-d42e-4042-bcdc-afd67e2dd35f"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
