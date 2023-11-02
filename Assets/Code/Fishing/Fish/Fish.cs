@@ -7,23 +7,10 @@ public class Fish : MonoBehaviour
     [SerializeField] private FishProperties properties;
     public FishTier tier;
 
-    public FishEverything theFish;
-
-    
-    [SerializeField] private float speed = 1;
-    [SerializeField] private float width = 3;
-    [SerializeField] private float height = 3;
-
     private float timeBeforeAction = 0;
-    private float actionTime = 0;
+    private float actionDuration = 0;
     private Transform fishingHitboxNode;
-    private void Start()
-    {
-        theFish = properties.GetFish(tier);
-    }
-    private void Update()
-    {    
-    }
+
     /// <summary>
     /// Based on tier, moves to a random node after a time limit to make fishing harder
     /// </summary>
@@ -33,43 +20,92 @@ public class Fish : MonoBehaviour
         switch (tier)
         {
             case FishTier.SMALL:
-                if(timeBeforeAction > 2)
+                if(timeBeforeAction > properties.smallFish.timeBeforeDash)
                 {
                     if (!fishingHitboxNode)
                     {
                         fishingHitboxNode = hitboxNodes[Random.Range(0, (int)hitboxNodes.Length - 1)];
                     }
-                    actionTime += Time.deltaTime;
-                    if(actionTime < 1)
+
+                    actionDuration += Time.deltaTime;
+                    if(actionDuration < properties.smallFish.dashDuration)
                     {
                         if (isFishBeingReeled)
                         {
-                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, 3f * Time.deltaTime);
+                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, properties.smallFish.dashWhileWrangledSpeed * Time.deltaTime);
                         }
                         else
                         {
-                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, 5f * Time.deltaTime);
+                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, properties.smallFish.dashSpeed * Time.deltaTime);
                         }
                         
                     }
                     else
                     {
-                        actionTime = 0;
+                        actionDuration = 0;
                         timeBeforeAction = 0;
                         fishingHitboxNode = null;
                     }
                 }
                 break;
-            case FishTier.MEDIUM:
-                if (timeBeforeAction > 2)
-                {
 
+            case FishTier.MEDIUM:
+                if (timeBeforeAction > properties.mediumFish.timeBeforeDash)
+                {
+                    if (!fishingHitboxNode)
+                    {
+                        fishingHitboxNode = hitboxNodes[Random.Range(0, (int)hitboxNodes.Length - 1)];
+                    }
+
+                    actionDuration += Time.deltaTime;
+                    if (actionDuration < properties.mediumFish.dashDuration)
+                    {
+                        if (isFishBeingReeled)
+                        {
+                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, properties.mediumFish.dashWhileWrangledSpeed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, properties.mediumFish.dashSpeed * Time.deltaTime);
+                        }
+
+                    }
+                    else
+                    {
+                        actionDuration = 0;
+                        timeBeforeAction = 0;
+                        fishingHitboxNode = null;
+                    }
                 }
                 break;
-            case FishTier.LARGE:
-                if (timeBeforeAction > 1)
-                {
 
+            case FishTier.LARGE:
+                if (timeBeforeAction > properties.largeFish.timeBeforeDash)
+                {
+                    if (!fishingHitboxNode)
+                    {
+                        fishingHitboxNode = hitboxNodes[Random.Range(0, (int)hitboxNodes.Length - 1)];
+                    }
+
+                    actionDuration += Time.deltaTime;
+                    if (actionDuration < properties.largeFish.dashDuration)
+                    {
+                        if (isFishBeingReeled)
+                        {
+                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, properties.largeFish.dashWhileWrangledSpeed * Time.deltaTime);
+                        }
+                        else
+                        {
+                            transform.position = Vector3.MoveTowards(transform.position, fishingHitboxNode.position, properties.largeFish.dashSpeed * Time.deltaTime);
+                        }
+
+                    }
+                    else
+                    {
+                        actionDuration = 0;
+                        timeBeforeAction = 0;
+                        fishingHitboxNode = null;
+                    }
                 }
                 break;
         }

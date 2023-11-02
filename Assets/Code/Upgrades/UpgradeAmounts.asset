@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c7abf4e6998cd47962c8e28abce3b9, type: 3}
-  m_Name: New Upgrade
+  m_Script: {fileID: 11500000, guid: 6678ec10773d2a84c82616885bb607d3, type: 3}
+  m_Name: UpgradeAmounts
   m_EditorClassIdentifier: 
-  Name: Boat Move Speed
-  Description: Increases Acceleration, Max speed
-  Price: 5000
-  Increase: 200
-  Level: 0
-  MaxLevel: 3
+  AmmoIncreaseAmount: 3
+  SpeedIncreaseAmount: 1.2
+  TurnIncreaseAmount: 1.2
+  WrangleIncreaseAmount: 1
+  CatchingSizeIncreaseAmount: 0
+  RangeIncreaseAmount: 1.2

@@ -5,43 +5,19 @@ using UnityEngine.UI;
 public class FishProperties : ScriptableObject
 {
     [System.Serializable]
-    public struct FishEverything
+    public struct FishCalculations
     {
-        public string name;
-        FishTier tier;
-        public GameObject fishIcon;
+        public float dashSpeed;
+        public float dashWhileWrangledSpeed;
+        [Range(0f, 5f)]
+        public float timeBeforeDash;
+        [Range(0f, 5f)]
+        public float dashDuration;
     }
     public enum FishTier { SMALL, MEDIUM, LARGE }
-    public FishEverything[] smallFish;
-    public FishEverything[] mediumFish;
-    public FishEverything[] largeFish;
-    public FishEverything GetFish(FishTier tier)
-    {
-        FishEverything fish;
-        int randomNumber;
-        switch (tier)
-        {
-            case FishTier.SMALL:
-                randomNumber = Random.Range(0, smallFish.Length - 1);
-                fish = smallFish[randomNumber];
-                return fish;
-
-            case FishTier.MEDIUM:
-                randomNumber = Random.Range(0, mediumFish.Length - 1);
-                fish = mediumFish[randomNumber];
-                return fish;
-
-            case FishTier.LARGE:
-                randomNumber = Random.Range(0, largeFish.Length - 1);
-                fish = largeFish[randomNumber];
-                return fish;
-
-            //to get the function to shutup about no return
-            default:
-                randomNumber = Random.Range(0, smallFish.Length - 1);
-                fish = smallFish[randomNumber];
-                return fish;
-        }
-    }
+    public FishCalculations smallFish;
+    public FishCalculations mediumFish;
+    //Can make this an array later, and get a random one to maybe make discernable fish patterns
+    public FishCalculations largeFish;
 
 }

@@ -17,20 +17,29 @@ public class InputManager : MonoBehaviour
     // --CODE VARIABLES--
     InputAction m_forwardAction;
     InputAction m_yawAction;
-    InputAction m_fireAction;
-    InputAction m_MMAction;
+    InputAction m_fishAction;
+    InputAction m_MinigameAction;
+    InputAction m_ExitFishingAction;
 
     // --UNITY METHODS--
     void Awake()
     {
+        //Sailing
         m_forwardAction = m_playerInput.actions["Forward"];
         m_yawAction = m_playerInput.actions["Yaw"];
-        m_fireAction = m_playerInput.actions["Fire"];
-        m_MMAction = m_playerInput.actions["MinigameMover"];
+        m_fishAction = m_playerInput.actions["Fish"];
+
+        //Fishing
+        m_MinigameAction = m_playerInput.actions["MinigameMover"];
+        m_ExitFishingAction = m_playerInput.actions["Exit"];
+
+        //UI
+
     }
 
     void Update()
     {
+        //Sailing
         if (m_forwardAction.inProgress)
         {
             m_playerController.AddVelocity(m_forwardAction.ReadValue<float>());
@@ -41,14 +50,26 @@ public class InputManager : MonoBehaviour
             m_playerController.Turn(m_yawAction.ReadValue<float>());
         }
 
-        if (m_fireAction.WasPressedThisFrame())
+        if (m_fishAction.WasPressedThisFrame())
         {
             m_playerFish.FishMinigame();
         }
 
-        if (m_MMAction.inProgress)
+
+        //Fishing
+        if (m_MinigameAction.inProgress)
         {
-            m_playerFish.MoveMM(m_MMAction.ReadValue<Vector2>());
+            m_playerFish.MoveMM(m_MinigameAction.ReadValue<Vector2>());
         }
+
+        if (m_ExitFishingAction.WasPerformedThisFrame())
+        {
+            m_playerFish.EndMinigame(false);
+        }
+    }
+
+    public void ChangeActionMap(string actionMap)
+    {
+        m_playerInput.SwitchCurrentActionMap(actionMap);
     }
 }

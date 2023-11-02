@@ -24,7 +24,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
     ""name"": ""GameActions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Sailing"",
             ""id"": ""6a2b60fa-e516-408d-a67a-5bf3c7dfde75"",
             ""actions"": [
                 {
@@ -55,16 +55,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""MinigameMover"",
-                    ""type"": ""Value"",
-                    ""id"": ""b494d0f7-17c1-4c05-97ab-688505661309"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Fire"",
+                    ""name"": ""Accelerate"",
                     ""type"": ""Button"",
                     ""id"": ""0e8abc8d-b948-40ac-a8f8-9da9ae5f34e8"",
                     ""expectedControlType"": ""Button"",
@@ -73,7 +64,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EnterLeftCannon"",
+                    ""name"": ""Zoom"",
                     ""type"": ""Button"",
                     ""id"": ""9a7bf9c4-b82e-452a-aaa7-fcb4fa37460d"",
                     ""expectedControlType"": ""Button"",
@@ -82,7 +73,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""EnterRightCannon"",
+                    ""name"": ""Fish"",
                     ""type"": ""Button"",
                     ""id"": ""1c4ec941-3ba6-4a2e-87e2-3d024b073198"",
                     ""expectedControlType"": ""Button"",
@@ -91,16 +82,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SwitchWeapon"",
-                    ""type"": ""Button"",
-                    ""id"": ""59daee6a-eabf-4496-a2af-17fdf03a96ab"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Horn"",
+                    ""name"": ""Select"",
                     ""type"": ""Button"",
                     ""id"": ""c9ced0e5-40b5-4dda-9d52-f5515902bfce"",
                     ""expectedControlType"": ""Button"",
@@ -227,7 +209,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -238,7 +220,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -249,7 +231,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -260,7 +242,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -271,7 +253,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -282,7 +264,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Fire"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -293,7 +275,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnterLeftCannon"",
+                    ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -304,7 +286,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnterLeftCannon"",
+                    ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -315,29 +297,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnterRightCannon"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9c27c960-442c-48f4-a9e6-88beb4f7e75b"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchWeapon"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b6caf739-ba72-4551-aa1b-fe837af38975"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchWeapon"",
+                    ""action"": ""Fish"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -348,51 +308,7 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Horn"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cf559c81-fabc-4b49-a0dc-2cecf6f46f98"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MinigameMover"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2fa99415-e6ee-486b-8551-32471f0f3281"",
-                    ""path"": ""<Pointer>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MinigameMover"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f74ed127-ebbe-4905-b4df-5b0bcce3366d"",
-                    ""path"": ""<Joystick>/{Hatswitch}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MinigameMover"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0d7a0793-8399-4f6b-8f19-d007f9adc5ce"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard (Testing)"",
-                    ""action"": ""MinigameMover"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -913,6 +829,87 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Fishing"",
+            ""id"": ""7617257e-f2ef-4054-8c13-afcd6e16f48e"",
+            ""actions"": [
+                {
+                    ""name"": ""MinigameMover"",
+                    ""type"": ""Value"",
+                    ""id"": ""371f0054-aa4e-4a1d-b8e6-d8dce02d8702"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""49038bd5-53e9-493f-93cf-6f228303e69d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8382bd34-8871-498c-a574-26be747d6fd2"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MinigameMover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6c3a089-9a1d-42ab-bd10-0bab1ac0339e"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MinigameMover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""180ab7da-dc63-4f5c-9252-47799fe60c97"",
+                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MinigameMover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ea7a4145-c5dd-44d1-b463-38935a4622cb"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard (Testing)"",
+                    ""action"": ""MinigameMover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17c82f0e-5f62-4999-8f94-c0d5a6b0b0c4"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -962,17 +959,15 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Forward = m_Player.FindAction("Forward", throwIfNotFound: true);
-        m_Player_Yaw = m_Player.FindAction("Yaw", throwIfNotFound: true);
-        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_MinigameMover = m_Player.FindAction("MinigameMover", throwIfNotFound: true);
-        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
-        m_Player_EnterLeftCannon = m_Player.FindAction("EnterLeftCannon", throwIfNotFound: true);
-        m_Player_EnterRightCannon = m_Player.FindAction("EnterRightCannon", throwIfNotFound: true);
-        m_Player_SwitchWeapon = m_Player.FindAction("SwitchWeapon", throwIfNotFound: true);
-        m_Player_Horn = m_Player.FindAction("Horn", throwIfNotFound: true);
+        // Sailing
+        m_Sailing = asset.FindActionMap("Sailing", throwIfNotFound: true);
+        m_Sailing_Forward = m_Sailing.FindAction("Forward", throwIfNotFound: true);
+        m_Sailing_Yaw = m_Sailing.FindAction("Yaw", throwIfNotFound: true);
+        m_Sailing_Look = m_Sailing.FindAction("Look", throwIfNotFound: true);
+        m_Sailing_Accelerate = m_Sailing.FindAction("Accelerate", throwIfNotFound: true);
+        m_Sailing_Zoom = m_Sailing.FindAction("Zoom", throwIfNotFound: true);
+        m_Sailing_Fish = m_Sailing.FindAction("Fish", throwIfNotFound: true);
+        m_Sailing_Select = m_Sailing.FindAction("Select", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -985,6 +980,10 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Fishing
+        m_Fishing = asset.FindActionMap("Fishing", throwIfNotFound: true);
+        m_Fishing_MinigameMover = m_Fishing.FindAction("MinigameMover", throwIfNotFound: true);
+        m_Fishing_Exit = m_Fishing.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1041,69 +1040,59 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Forward;
-    private readonly InputAction m_Player_Yaw;
-    private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_MinigameMover;
-    private readonly InputAction m_Player_Fire;
-    private readonly InputAction m_Player_EnterLeftCannon;
-    private readonly InputAction m_Player_EnterRightCannon;
-    private readonly InputAction m_Player_SwitchWeapon;
-    private readonly InputAction m_Player_Horn;
-    public struct PlayerActions
+    // Sailing
+    private readonly InputActionMap m_Sailing;
+    private ISailingActions m_SailingActionsCallbackInterface;
+    private readonly InputAction m_Sailing_Forward;
+    private readonly InputAction m_Sailing_Yaw;
+    private readonly InputAction m_Sailing_Look;
+    private readonly InputAction m_Sailing_Accelerate;
+    private readonly InputAction m_Sailing_Zoom;
+    private readonly InputAction m_Sailing_Fish;
+    private readonly InputAction m_Sailing_Select;
+    public struct SailingActions
     {
         private @GameActions m_Wrapper;
-        public PlayerActions(@GameActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Forward => m_Wrapper.m_Player_Forward;
-        public InputAction @Yaw => m_Wrapper.m_Player_Yaw;
-        public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @MinigameMover => m_Wrapper.m_Player_MinigameMover;
-        public InputAction @Fire => m_Wrapper.m_Player_Fire;
-        public InputAction @EnterLeftCannon => m_Wrapper.m_Player_EnterLeftCannon;
-        public InputAction @EnterRightCannon => m_Wrapper.m_Player_EnterRightCannon;
-        public InputAction @SwitchWeapon => m_Wrapper.m_Player_SwitchWeapon;
-        public InputAction @Horn => m_Wrapper.m_Player_Horn;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public SailingActions(@GameActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Forward => m_Wrapper.m_Sailing_Forward;
+        public InputAction @Yaw => m_Wrapper.m_Sailing_Yaw;
+        public InputAction @Look => m_Wrapper.m_Sailing_Look;
+        public InputAction @Accelerate => m_Wrapper.m_Sailing_Accelerate;
+        public InputAction @Zoom => m_Wrapper.m_Sailing_Zoom;
+        public InputAction @Fish => m_Wrapper.m_Sailing_Fish;
+        public InputAction @Select => m_Wrapper.m_Sailing_Select;
+        public InputActionMap Get() { return m_Wrapper.m_Sailing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(SailingActions set) { return set.Get(); }
+        public void SetCallbacks(ISailingActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_SailingActionsCallbackInterface != null)
             {
-                @Forward.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnForward;
-                @Forward.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnForward;
-                @Forward.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnForward;
-                @Yaw.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnYaw;
-                @Yaw.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnYaw;
-                @Yaw.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnYaw;
-                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @MinigameMover.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMinigameMover;
-                @MinigameMover.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMinigameMover;
-                @MinigameMover.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMinigameMover;
-                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @EnterLeftCannon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterLeftCannon;
-                @EnterLeftCannon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterLeftCannon;
-                @EnterLeftCannon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterLeftCannon;
-                @EnterRightCannon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterRightCannon;
-                @EnterRightCannon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterRightCannon;
-                @EnterRightCannon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterRightCannon;
-                @SwitchWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
-                @SwitchWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
-                @SwitchWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchWeapon;
-                @Horn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHorn;
-                @Horn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHorn;
-                @Horn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHorn;
+                @Forward.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnForward;
+                @Forward.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnForward;
+                @Forward.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnForward;
+                @Yaw.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnYaw;
+                @Yaw.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnYaw;
+                @Yaw.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnYaw;
+                @Look.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnLook;
+                @Accelerate.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnAccelerate;
+                @Accelerate.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnAccelerate;
+                @Accelerate.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnAccelerate;
+                @Zoom.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnZoom;
+                @Fish.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnFish;
+                @Fish.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnFish;
+                @Fish.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnFish;
+                @Select.started -= m_Wrapper.m_SailingActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_SailingActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_SailingActionsCallbackInterface.OnSelect;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_SailingActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Forward.started += instance.OnForward;
@@ -1115,28 +1104,22 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @MinigameMover.started += instance.OnMinigameMover;
-                @MinigameMover.performed += instance.OnMinigameMover;
-                @MinigameMover.canceled += instance.OnMinigameMover;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
-                @EnterLeftCannon.started += instance.OnEnterLeftCannon;
-                @EnterLeftCannon.performed += instance.OnEnterLeftCannon;
-                @EnterLeftCannon.canceled += instance.OnEnterLeftCannon;
-                @EnterRightCannon.started += instance.OnEnterRightCannon;
-                @EnterRightCannon.performed += instance.OnEnterRightCannon;
-                @EnterRightCannon.canceled += instance.OnEnterRightCannon;
-                @SwitchWeapon.started += instance.OnSwitchWeapon;
-                @SwitchWeapon.performed += instance.OnSwitchWeapon;
-                @SwitchWeapon.canceled += instance.OnSwitchWeapon;
-                @Horn.started += instance.OnHorn;
-                @Horn.performed += instance.OnHorn;
-                @Horn.canceled += instance.OnHorn;
+                @Accelerate.started += instance.OnAccelerate;
+                @Accelerate.performed += instance.OnAccelerate;
+                @Accelerate.canceled += instance.OnAccelerate;
+                @Zoom.started += instance.OnZoom;
+                @Zoom.performed += instance.OnZoom;
+                @Zoom.canceled += instance.OnZoom;
+                @Fish.started += instance.OnFish;
+                @Fish.performed += instance.OnFish;
+                @Fish.canceled += instance.OnFish;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public SailingActions @Sailing => new SailingActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1242,6 +1225,47 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Fishing
+    private readonly InputActionMap m_Fishing;
+    private IFishingActions m_FishingActionsCallbackInterface;
+    private readonly InputAction m_Fishing_MinigameMover;
+    private readonly InputAction m_Fishing_Exit;
+    public struct FishingActions
+    {
+        private @GameActions m_Wrapper;
+        public FishingActions(@GameActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MinigameMover => m_Wrapper.m_Fishing_MinigameMover;
+        public InputAction @Exit => m_Wrapper.m_Fishing_Exit;
+        public InputActionMap Get() { return m_Wrapper.m_Fishing; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(FishingActions set) { return set.Get(); }
+        public void SetCallbacks(IFishingActions instance)
+        {
+            if (m_Wrapper.m_FishingActionsCallbackInterface != null)
+            {
+                @MinigameMover.started -= m_Wrapper.m_FishingActionsCallbackInterface.OnMinigameMover;
+                @MinigameMover.performed -= m_Wrapper.m_FishingActionsCallbackInterface.OnMinigameMover;
+                @MinigameMover.canceled -= m_Wrapper.m_FishingActionsCallbackInterface.OnMinigameMover;
+                @Exit.started -= m_Wrapper.m_FishingActionsCallbackInterface.OnExit;
+                @Exit.performed -= m_Wrapper.m_FishingActionsCallbackInterface.OnExit;
+                @Exit.canceled -= m_Wrapper.m_FishingActionsCallbackInterface.OnExit;
+            }
+            m_Wrapper.m_FishingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MinigameMover.started += instance.OnMinigameMover;
+                @MinigameMover.performed += instance.OnMinigameMover;
+                @MinigameMover.canceled += instance.OnMinigameMover;
+                @Exit.started += instance.OnExit;
+                @Exit.performed += instance.OnExit;
+                @Exit.canceled += instance.OnExit;
+            }
+        }
+    }
+    public FishingActions @Fishing => new FishingActions(this);
     private int m_PlaystationDualShockcontrollerSchemeIndex = -1;
     public InputControlScheme PlaystationDualShockcontrollerScheme
     {
@@ -1278,17 +1302,15 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_KeyboardTestingSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface ISailingActions
     {
         void OnForward(InputAction.CallbackContext context);
         void OnYaw(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnMinigameMover(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
-        void OnEnterLeftCannon(InputAction.CallbackContext context);
-        void OnEnterRightCannon(InputAction.CallbackContext context);
-        void OnSwitchWeapon(InputAction.CallbackContext context);
-        void OnHorn(InputAction.CallbackContext context);
+        void OnAccelerate(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
+        void OnFish(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1302,5 +1324,10 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IFishingActions
+    {
+        void OnMinigameMover(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
 }

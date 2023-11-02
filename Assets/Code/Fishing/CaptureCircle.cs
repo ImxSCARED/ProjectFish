@@ -4,27 +4,7 @@ using UnityEngine;
 
 public class CaptureCircle : MonoBehaviour
 {
-    [SerializeField] private Transform shipTransform;
-    public Transform fishTransform;
-
-
     public bool fishInCircle;
-
-    private void Update()
-    {
-        if (fishTransform)
-        {
-            if (fishInCircle)
-            {
-                fishTransform.position = Vector3.MoveTowards(fishTransform.position, shipTransform.position, 2f * Time.deltaTime);
-            }
-            else
-            {
-                fishTransform.position = Vector3.MoveTowards(fishTransform.position, shipTransform.position, -1.5f * Time.deltaTime);
-            }
-        }
-        
-    }
 
     private void OnTriggerEnter(Collider collision)
     {

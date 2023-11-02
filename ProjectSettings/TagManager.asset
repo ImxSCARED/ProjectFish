@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Fish
   - MinigameMover
+  - Dock
   layers:
   - Default
   - TransparentFX

@@ -10,9 +10,9 @@ public class FishNet : MonoBehaviour
     {
         if(other.tag == "Fish")
         {
-            if (m_fishing.fishing)
+            if (m_fishing.currentlyFishing)
             {
-                m_fishing.FishCaught();
+                m_fishing.EndMinigame(true);
             }
         }
     }

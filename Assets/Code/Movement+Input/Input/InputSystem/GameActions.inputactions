@@ -2,7 +2,7 @@
     "name": "GameActions",
     "maps": [
         {
-            "name": "Player",
+            "name": "Sailing",
             "id": "6a2b60fa-e516-408d-a67a-5bf3c7dfde75",
             "actions": [
                 {
@@ -33,16 +33,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MinigameMover",
-                    "type": "Value",
-                    "id": "b494d0f7-17c1-4c05-97ab-688505661309",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Fire",
+                    "name": "Accelerate",
                     "type": "Button",
                     "id": "0e8abc8d-b948-40ac-a8f8-9da9ae5f34e8",
                     "expectedControlType": "Button",
@@ -51,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EnterLeftCannon",
+                    "name": "Zoom",
                     "type": "Button",
                     "id": "9a7bf9c4-b82e-452a-aaa7-fcb4fa37460d",
                     "expectedControlType": "Button",
@@ -60,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "EnterRightCannon",
+                    "name": "Fish",
                     "type": "Button",
                     "id": "1c4ec941-3ba6-4a2e-87e2-3d024b073198",
                     "expectedControlType": "Button",
@@ -69,16 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SwitchWeapon",
-                    "type": "Button",
-                    "id": "59daee6a-eabf-4496-a2af-17fdf03a96ab",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Horn",
+                    "name": "Select",
                     "type": "Button",
                     "id": "c9ced0e5-40b5-4dda-9d52-f5515902bfce",
                     "expectedControlType": "Button",
@@ -205,7 +187,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "Accelerate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -216,7 +198,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "Accelerate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -227,7 +209,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "Accelerate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -238,7 +220,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "Accelerate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -249,7 +231,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "Accelerate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -260,7 +242,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "Accelerate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -271,7 +253,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnterLeftCannon",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -282,7 +264,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnterLeftCannon",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -293,29 +275,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EnterRightCannon",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9c27c960-442c-48f4-a9e6-88beb4f7e75b",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwitchWeapon",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b6caf739-ba72-4551-aa1b-fe837af38975",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwitchWeapon",
+                    "action": "Fish",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -326,51 +286,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Horn",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cf559c81-fabc-4b49-a0dc-2cecf6f46f98",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MinigameMover",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2fa99415-e6ee-486b-8551-32471f0f3281",
-                    "path": "<Pointer>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MinigameMover",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f74ed127-ebbe-4905-b4df-5b0bcce3366d",
-                    "path": "<Joystick>/{Hatswitch}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MinigameMover",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0d7a0793-8399-4f6b-8f19-d007f9adc5ce",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard (Testing)",
-                    "action": "MinigameMover",
+                    "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -887,6 +803,87 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Fishing",
+            "id": "7617257e-f2ef-4054-8c13-afcd6e16f48e",
+            "actions": [
+                {
+                    "name": "MinigameMover",
+                    "type": "Value",
+                    "id": "371f0054-aa4e-4a1d-b8e6-d8dce02d8702",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "49038bd5-53e9-493f-93cf-6f228303e69d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8382bd34-8871-498c-a574-26be747d6fd2",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MinigameMover",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6c3a089-9a1d-42ab-bd10-0bab1ac0339e",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MinigameMover",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "180ab7da-dc63-4f5c-9252-47799fe60c97",
+                    "path": "<Joystick>/{Hatswitch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MinigameMover",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea7a4145-c5dd-44d1-b463-38935a4622cb",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard (Testing)",
+                    "action": "MinigameMover",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17c82f0e-5f62-4999-8f94-c0d5a6b0b0c4",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

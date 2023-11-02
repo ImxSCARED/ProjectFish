@@ -13,7 +13,17 @@ MonoBehaviour:
   m_Name: FishProperties
   m_EditorClassIdentifier: 
   smallFish:
-  - name: Fish
-    fishIcon: {fileID: 0}
-  mediumFish: []
-  largeFish: []
+    dashSpeed: 5
+    dashWhileWrangledSpeed: 3
+    timeBeforeDash: 3
+    dashDuration: 1
+  mediumFish:
+    dashSpeed: 5
+    dashWhileWrangledSpeed: 3
+    timeBeforeDash: 1
+    dashDuration: 1
+  largeFish:
+    dashSpeed: 0
+    dashWhileWrangledSpeed: 0
+    timeBeforeDash: 0
+    dashDuration: 0
