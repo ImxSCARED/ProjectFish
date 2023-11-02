@@ -5,6 +5,13 @@ using UnityEngine.UI;
 public class FishProperties : ScriptableObject
 {
     [System.Serializable]
+    public struct FishData
+    {
+        public string name;
+        public Image fishImage;
+        public FishTier tier;
+    }
+    [System.Serializable]
     public struct FishCalculations
     {
         public float dashSpeed;
@@ -13,6 +20,7 @@ public class FishProperties : ScriptableObject
         public float timeBeforeDash;
         [Range(0f, 5f)]
         public float dashDuration;
+        public FishData[] fishies;
     }
     public enum FishTier { SMALL, MEDIUM, LARGE }
     public FishCalculations smallFish;
