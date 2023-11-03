@@ -20,6 +20,10 @@ public class UpgradeButton : MonoBehaviour
 
     public void UpgradeSelected()
     {
-        UpgradeManager.instance.BuyUpgrade(m_UpgradeType);
+        Upgrade upgrade = UpgradeManager.instance.BuyUpgrade(m_UpgradeType);
+        if (upgrade)
+        {
+            SetInfo(upgrade);
+        }
     }
 }

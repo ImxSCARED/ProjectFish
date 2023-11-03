@@ -17,6 +17,7 @@ public class UpgradeManager : MonoBehaviour
         instance = this;
         m_fishing = GetComponent<Fishing>();
         m_movementController = GetComponent<MovementController>();
+        m_playerManager = GetComponent<PlayerManager>();
     }
 
     private void ImplementUpgrade(Upgrade UpgradeToAdd)
@@ -49,28 +50,29 @@ public class UpgradeManager : MonoBehaviour
                 break;
         }
     }
-    public void BuyUpgrade(UpgradeData.UpgradeType type)
+    public Upgrade BuyUpgrade(UpgradeData.UpgradeType type)
     {
         foreach(Upgrade UP in m_Upgrades)
         {
             if(UP.Type == type)
             {
-                if(UP.Level == UP.MaxLevel)
+                if(UP.Level != UP.MaxLevel)
                 {
-                    return;
-                }
-                if (m_playerManager.Money >= UP.Price)
-                {
-                    m_playerManager.Money -= UP.Price;
-                    ImplementUpgrade(UP);
+                    if (m_playerManager.Money >= UP.Price)
+                    {
+                        m_playerManager.Money -= UP.Price;
+                        UP.Level++;
+                        ImplementUpgrade(UP);
 
-                    UP.Level++;
-                    UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
-                    return;
+                        
+                        UP.Price = Mathf.RoundToInt(UP.Price * UP.PriceIncrease);
+                        return UP;
+                    }
                 }
-                return;
+                return null;
             }
         }
+        return null;
     }
     public void GameReloaded(Upgrade[] upgrades)
     {

@@ -14,7 +14,7 @@ public class Fishing : MonoBehaviour
     //Fishing
     private Fish currentFish;
     public bool currentlyFishing;
-    private int currentHarpoons = 6;
+    public int currentHarpoons = 6;
 
     //Values changed by UpgradeManager
     public int ammoUpgrade = 0;
@@ -28,7 +28,7 @@ public class Fishing : MonoBehaviour
     public float fishWrangleSpeed = 3f;
     [Range(0f, 10f)]
     public float fishMovingAwaySpeed = 1.5f;
-    public Vector2 fishingRange = new Vector2(20, 30);
+    public Vector2 fishingRange = new Vector2(30, 20);
     public void FishMinigame()
     {
         if (!currentlyFishing)
@@ -61,7 +61,11 @@ public class Fishing : MonoBehaviour
         if (fishCaught)
         {
             GameObject fish = fishingSpot.currentFish;
+            GetComponent<PlayerManager>().AddFish(fish.GetComponent<Fish>().data);
+
+            fishingSpot.currentFish = null;
             fish.SetActive(false);
+
         }
     }
 
@@ -109,7 +113,7 @@ public class Fishing : MonoBehaviour
 
     public void ChangeFishingRangeSize()
     {
-        fishingSpot.transform.localScale = new Vector3(fishingRange.x * rangeUpgrade, fishingRange.y * rangeUpgrade, fishingSpot.transform.localScale.z);
+        fishingSpot.transform.localScale = new Vector3(fishingRange.x * rangeUpgrade, 0.01f, fishingRange.y * rangeUpgrade);
     }
     public void MoveMM(Vector2 input)
     {

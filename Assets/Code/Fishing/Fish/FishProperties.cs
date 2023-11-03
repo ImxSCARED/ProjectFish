@@ -29,4 +29,17 @@ public class FishProperties : ScriptableObject
     //Can make this an array later, and get a random one to maybe make discernable fish patterns
     public FishCalculations largeFish;
 
+    public FishData GetFishData(FishTier tier)
+    {
+        switch (tier)
+        {
+            case FishTier.SMALL:
+                return smallFish.fishies[Random.Range(0, smallFish.fishies.Length)];
+            case FishTier.MEDIUM:
+                return mediumFish.fishies[Random.Range(0, mediumFish.fishies.Length)];
+            case FishTier.LARGE:
+                return largeFish.fishies[Random.Range(0, largeFish.fishies.Length)];
+        }
+        return smallFish.fishies[0];
+    }
 }

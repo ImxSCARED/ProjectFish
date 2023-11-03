@@ -7,6 +7,7 @@ public class Fish : MonoBehaviour
     [SerializeField] private FishProperties properties;
     public FishTier tier;
 
+    public FishData data;
     private float timeBeforeAction = 0;
     private float actionDuration = 0;
     private Transform fishingHitboxNode;
@@ -14,6 +15,10 @@ public class Fish : MonoBehaviour
     /// <summary>
     /// Based on tier, moves to a random node after a time limit to make fishing harder
     /// </summary>
+    private void Awake()
+    {
+        data = properties.GetFishData(tier);
+    }
     public void FishDash(Transform[] hitboxNodes, bool isFishBeingReeled)
     {
         timeBeforeAction += Time.deltaTime;

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FishingRange
   m_EditorClassIdentifier: 
   Name: Fishing Range
-  Description: Increases the size you can start fishing events
+  Description: Increases the range of the fishing events
   Price: 250
   Level: 0
   PriceIncrease: 2
-  MaxLevel: 2
+  MaxLevel: 1
   Type: 5

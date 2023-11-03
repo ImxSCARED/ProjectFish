@@ -18,6 +18,10 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] private GameObject settings;
 
+    private void Start()
+    {
+        m_UpgradeManager = GetComponent<UpgradeManager>();
+    }
     private void Update()
     {
         Debug.Log(isDocked);
@@ -59,5 +63,12 @@ public class PlayerManager : MonoBehaviour
             }
         }
         storedFish.Clear();
+    }
+
+    public void ExitHub()
+    {
+        GetComponent<InputManager>().ChangeActionMap("Sailing");
+        hub.SetActive(false);
+        isDocked = false;
     }
 }
