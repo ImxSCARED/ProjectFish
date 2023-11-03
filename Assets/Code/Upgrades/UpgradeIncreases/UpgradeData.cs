@@ -12,7 +12,9 @@ public class UpgradeData : ScriptableObject
     public float SpeedIncreaseAmount;
     [Range(1f, 10f)]
     public float TurnIncreaseAmount;
+    [Range(1f, 3f)]
     public float WrangleIncreaseAmount;
+    [Range(1f, 3f)]
     public float CatchingSizeIncreaseAmount;
     [Range(1f, 3f)]
     public float RangeIncreaseAmount;

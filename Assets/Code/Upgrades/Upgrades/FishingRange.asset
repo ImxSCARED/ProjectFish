@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c7abf4e6998cd47962c8e28abce3b9, type: 3}
   m_Name: FishingRange
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  Price: 0
+  Name: Fishing Range
+  Description: Increases the size you can start fishing events
+  Price: 250
   Level: 0
-  PriceIncrease: 0
-  MaxLevel: 0
-  Type: 4
+  PriceIncrease: 2
+  MaxLevel: 2
+  Type: 5

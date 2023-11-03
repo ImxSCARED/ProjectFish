@@ -18,5 +18,4 @@ public class Upgrade : ScriptableObject
     public int MaxLevel;
 
     public UpgradeData.UpgradeType Type;
-    
 }

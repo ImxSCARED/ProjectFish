@@ -17,13 +17,24 @@ MonoBehaviour:
     dashWhileWrangledSpeed: 3
     timeBeforeDash: 3
     dashDuration: 1
+    fishies:
+    - name: Bass
+      fishImage: {fileID: 0}
+      value: 100
+      tier: 0
+    - name: 
+      fishImage: {fileID: 0}
+      value: 0
+      tier: 0
   mediumFish:
     dashSpeed: 5
     dashWhileWrangledSpeed: 3
     timeBeforeDash: 1
     dashDuration: 1
+    fishies: []
   largeFish:
     dashSpeed: 0
     dashWhileWrangledSpeed: 0
     timeBeforeDash: 0
     dashDuration: 0
+    fishies: []

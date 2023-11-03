@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c7abf4e6998cd47962c8e28abce3b9, type: 3}
   m_Name: TurnSpeed
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  Price: 0
+  Name: Boat Turn Speed
+  Description: Increases the speed you can turn and reduces the turning speed requirement
+  Price: 300
   Level: 0
-  PriceIncrease: 0
-  MaxLevel: 0
+  PriceIncrease: 1.5
+  MaxLevel: 2
   Type: 2

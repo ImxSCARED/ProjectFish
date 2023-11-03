@@ -15,6 +15,6 @@ MonoBehaviour:
   AmmoIncreaseAmount: 3
   SpeedIncreaseAmount: 1.2
   TurnIncreaseAmount: 1.2
-  WrangleIncreaseAmount: 1
-  CatchingSizeIncreaseAmount: 0
+  WrangleIncreaseAmount: 1.2
+  CatchingSizeIncreaseAmount: 1.2
   RangeIncreaseAmount: 1.2

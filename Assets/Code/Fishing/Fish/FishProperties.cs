@@ -9,6 +9,7 @@ public class FishProperties : ScriptableObject
     {
         public string name;
         public Image fishImage;
+        public int value;
         public FishTier tier;
     }
     [System.Serializable]
