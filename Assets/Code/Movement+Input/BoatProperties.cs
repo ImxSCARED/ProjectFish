@@ -6,11 +6,8 @@ public class BoatProperties : MonoBehaviour
 {
     // --EDITOR VARIABLES--
 
-    [SerializeField]
     public float m_mass;                           // In kilograms
-    [SerializeField]
     public float m_rudderArea;                     // In metres^2
-    [SerializeField]
     public float m_maxRudderAngle = 35;            // In degrees
 
     // --CODE VARIABLES--
@@ -19,6 +16,12 @@ public class BoatProperties : MonoBehaviour
     static Vector2 m_forward2D;
 
     static readonly float m_divisionFactor = 100;       // This is to counteract the fact that time.deltaTime makes numbers real small, so they're hard to manipulate in-editor
+
+    // Public variables
+    [HideInInspector]
+    public float m_volume;
+    [HideInInspector]
+    public float m_surfaceArea;
 
     // Private variables
     Vector2 m_velocity;

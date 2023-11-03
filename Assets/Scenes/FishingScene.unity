@@ -444,7 +444,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29340
+  m_Name: pb_Mesh29336
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1211,7 +1211,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29370
+  m_Name: pb_Mesh29366
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1399,7 +1399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815480203}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1486.9, y: -2.7, z: -3160.2}
+  m_LocalPosition: {x: -1486.9, y: -10, z: -3160.2}
   m_LocalScale: {x: 33.159, y: 1, z: 65.813}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2141,7 +2141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035750595}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2755.5, y: 6.2, z: -4943.2}
+  m_LocalPosition: {x: -2955.02, y: 0, z: -4993.51}
   m_LocalScale: {x: 9.7875, y: 1, z: 14.067}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3204,7 +3204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148210223221}
   m_LocalRotation: {x: 0, y: -0.20680195, z: 0, w: 0.9783828}
-  m_LocalPosition: {x: 160.2, y: 5.09, z: -4.27}
+  m_LocalPosition: {x: 0, y: 99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3306,9 +3306,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc626c36e0517f47a90b4fe2bd2cd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_mass: 5
+  m_mass: 10
   m_rudderArea: 0
   m_maxRudderAngle: 35
+  m_volume: 0
+  m_surfaceArea: 0
 --- !u!114 &919132148210223223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3323,11 +3325,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rigidbody: {fileID: 1176148018}
   m_boatProperties: {fileID: 919132148210223222}
-  m_maxVelocity: {x: 0, y: 50, z: 0}
+  m_maxVelocity: {x: 0, y: 250, z: 0}
+  m_airFriction: 1
+  m_waterFriction: 0.3
+  m_waterTransform: {fileID: 1035750601}
   m_buoyancyPointsParent: {fileID: 1508900397}
-  m_waterLayer:
-    serializedVersion: 2
-    m_Bits: 16
+  m_hullCollider: {fileID: 1897073373}
+  m_displacementAmount: 30
+  m_depthBeforeSubmerged: 0.5
 --- !u!4 &1054348103368713607
 Transform:
   m_ObjectHideFlags: 0
