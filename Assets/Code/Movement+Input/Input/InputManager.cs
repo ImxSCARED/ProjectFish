@@ -33,22 +33,22 @@ public class InputManager : MonoBehaviour
     {
         if (m_forwardAction.inProgress)
         {
-            //m_playerController.Accelerate(m_forwardAction.ReadValue<float>());
+            m_playerController.Accelerate(m_forwardAction.ReadValue<float>());
         }
 
         if (m_yawAction.inProgress)
         {
-            //m_playerController.Turn(m_yawAction.ReadValue<float>());
+            m_playerController.Turn(m_yawAction.ReadValue<float>());
         }
 
         if (m_fireAction.WasPressedThisFrame())
         {
-            m_playerFish.FishMinigame();
+            //m_playerFish.FishMinigame();
         }
 
         if (m_MMAction.inProgress)
         {
-            m_playerFish.MoveMM(m_MMAction.ReadValue<Vector2>());
+            //m_playerFish.MoveMM(m_MMAction.ReadValue<Vector2>());
         }
     }
 }
