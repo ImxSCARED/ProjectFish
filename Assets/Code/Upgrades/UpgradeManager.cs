@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class UpgradeManager : MonoBehaviour
     private PlayerManager m_playerManager;
 
     public Upgrade[] m_Upgrades;
+    public Upgrade[] m_BaseUpgrades;
     [SerializeField] private UpgradeData m_UpgradeData;
 
     void Start()

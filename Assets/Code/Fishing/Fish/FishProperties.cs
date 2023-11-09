@@ -34,11 +34,11 @@ public class FishProperties : ScriptableObject
         switch (tier)
         {
             case FishTier.SMALL:
-                return smallFish.fishies[Random.Range(0, smallFish.fishies.Length)];
+                return smallFish.fishies[Random.Range(0, smallFish.fishies.Length - 1)];
             case FishTier.MEDIUM:
-                return mediumFish.fishies[Random.Range(0, mediumFish.fishies.Length)];
+                return mediumFish.fishies[Random.Range(0, mediumFish.fishies.Length - 1)];
             case FishTier.LARGE:
-                return largeFish.fishies[Random.Range(0, largeFish.fishies.Length)];
+                return largeFish.fishies[Random.Range(0, largeFish.fishies.Length - 1)];
         }
         return smallFish.fishies[0];
     }

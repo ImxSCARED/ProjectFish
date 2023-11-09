@@ -407,6 +407,24 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SellFish"",
+                    ""type"": ""Button"",
+                    ""id"": ""b70e87fe-5da9-44c5-9fde-b704c6c7bced"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExitDock"",
+                    ""type"": ""Button"",
+                    ""id"": ""644e8505-e992-4af4-9e9e-9547245fa453"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -827,6 +845,28 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a28466e1-83e5-4b52-8bb5-5b3e2b3b9ebd"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SellFish"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8625b82-9212-48b2-b216-4aa979a14ebf"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitDock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -980,6 +1020,8 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        m_UI_SellFish = m_UI.FindAction("SellFish", throwIfNotFound: true);
+        m_UI_ExitDock = m_UI.FindAction("ExitDock", throwIfNotFound: true);
         // Fishing
         m_Fishing = asset.FindActionMap("Fishing", throwIfNotFound: true);
         m_Fishing_MinigameMover = m_Fishing.FindAction("MinigameMover", throwIfNotFound: true);
@@ -1134,6 +1176,8 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
+    private readonly InputAction m_UI_SellFish;
+    private readonly InputAction m_UI_ExitDock;
     public struct UIActions
     {
         private @GameActions m_Wrapper;
@@ -1148,6 +1192,8 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputAction @SellFish => m_Wrapper.m_UI_SellFish;
+        public InputAction @ExitDock => m_Wrapper.m_UI_ExitDock;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1187,6 +1233,12 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @TrackedDeviceOrientation.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDeviceOrientation;
+                @SellFish.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSellFish;
+                @SellFish.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSellFish;
+                @SellFish.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSellFish;
+                @ExitDock.started -= m_Wrapper.m_UIActionsCallbackInterface.OnExitDock;
+                @ExitDock.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnExitDock;
+                @ExitDock.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnExitDock;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1221,6 +1273,12 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
                 @TrackedDeviceOrientation.started += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.performed += instance.OnTrackedDeviceOrientation;
                 @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
+                @SellFish.started += instance.OnSellFish;
+                @SellFish.performed += instance.OnSellFish;
+                @SellFish.canceled += instance.OnSellFish;
+                @ExitDock.started += instance.OnExitDock;
+                @ExitDock.performed += instance.OnExitDock;
+                @ExitDock.canceled += instance.OnExitDock;
             }
         }
     }
@@ -1324,6 +1382,8 @@ public partial class @GameActions : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+        void OnSellFish(InputAction.CallbackContext context);
+        void OnExitDock(InputAction.CallbackContext context);
     }
     public interface IFishingActions
     {

@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(isDocked);
+        
     }
     public void AddFish(FishProperties.FishData caughtFish)
     {

@@ -22,10 +22,6 @@ MonoBehaviour:
       fishImage: {fileID: 0}
       value: 100
       tier: 0
-    - name: 
-      fishImage: {fileID: 0}
-      value: 0
-      tier: 0
   mediumFish:
     dashSpeed: 5
     dashWhileWrangledSpeed: 3

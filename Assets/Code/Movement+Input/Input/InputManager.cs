@@ -12,14 +12,17 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     MovementController m_playerController;
     [SerializeField]
-    Fishing m_playerFish;
-
+    Fishing m_playerFishing;
+    [SerializeField]
+    PlayerManager m_playerManager;
     // --CODE VARIABLES--
     InputAction m_forwardAction;
     InputAction m_yawAction;
     InputAction m_fishAction;
     InputAction m_MinigameAction;
     InputAction m_ExitFishingAction;
+    InputAction m_SellFish;
+    InputAction m_ExitDock;
 
     // --UNITY METHODS--
     void Awake()
@@ -34,7 +37,8 @@ public class InputManager : MonoBehaviour
         m_ExitFishingAction = m_playerInput.actions["Exit"];
 
         //UI
-
+        m_SellFish = m_playerInput.actions["SellFish"];
+        m_ExitDock = m_playerInput.actions["ExitDock"];
     }
 
     void Update()
@@ -52,19 +56,30 @@ public class InputManager : MonoBehaviour
 
         if (m_fishAction.WasPressedThisFrame())
         {
-            m_playerFish.FishMinigame();
+            m_playerFishing.FishMinigame();
         }
 
 
         //Fishing
         if (m_MinigameAction.inProgress)
         {
-            m_playerFish.MoveMM(m_MinigameAction.ReadValue<Vector2>());
+            m_playerFishing.MoveMM(m_MinigameAction.ReadValue<Vector2>());
         }
 
         if (m_ExitFishingAction.WasPerformedThisFrame())
         {
-            m_playerFish.EndMinigame(false);
+            m_playerFishing.EndMinigame(false);
+        }
+
+        //UI
+        if (m_SellFish.WasPerformedThisFrame())
+        {
+            m_playerManager.SellFish();
+        }
+
+        if (m_ExitDock.WasPerformedThisFrame())
+        {
+            m_playerManager.ExitHub();
         }
     }
 
